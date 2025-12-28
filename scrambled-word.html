@@ -606,7 +606,7 @@
         }
 
         .winner-content h2 {
-            font-size: 48px;
+            font-size: 36px;
             margin-bottom: 20px;
             color: #f39c12;
         }
@@ -633,6 +633,16 @@
             color: #555;
         }
 
+        .vocab-info-display {
+            background: #e8f6f3;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-size: 16px;
+            color: #27ae60;
+            text-align: center;
+        }
+
         /* Logo Animation */
         .logo-container {
             position: fixed;
@@ -647,7 +657,7 @@
             height: auto;
             object-fit: contain;
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            /*box-shadow: 0 4px 15px rgba(0,0,0,0.3);*/
         }
 
         @keyframes swing {
@@ -902,6 +912,11 @@
                 <!-- This will be filled dynamically based on game mode -->
             </div>
 
+            <!-- Thông tin Level và Unit đang chơi -->
+            <div id="currentVocabInfo" class="vocab-info-display" style="display: none;">
+                📚 Playing: <span id="currentLevelDisplay">-</span> | 📖 Unit: <span id="currentUnitDisplay">-</span>
+            </div>
+
             <!-- Progress -->
             <div class="progress" id="progress">
                 Word 1 / 10
@@ -981,8 +996,14 @@
         <!-- Winner Modal -->
         <div class="winner-modal" id="winnerModal">
             <div class="winner-content">
-                <h2>🎉 CONGRATULATIONS! 🎉</h2>
+                <h2>🎉 CONGRATULATIONS!</h2>
                 <div class="winner-team" id="winnerTeam"></div>
+                
+                <!-- Thêm thông tin Level và Unit vào đây -->
+                <div id="vocabularyInfo" class="vocab-info-display" style="margin: 20px 0; font-size: 20px; padding: 15px;">
+                    📚 <strong>Vocabulary:</strong> <span id="finalLevel">-</span> | 📖 <strong>Unit:</strong> <span id="finalUnit">-</span>
+                </div>
+                
                 <div class="game-mode-info" id="gameModeInfo"></div>
                 <div class="final-scores" id="finalScores"></div>
                 <button class="btn btn-primary" onclick="playAgain()">🔄 PLAY AGAIN</button>
@@ -1016,6 +1037,8 @@
         
         // Biến cho từ điển
         let vocabularyData = "";
+        let selectedLevel = "";
+        let selectedUnit = "";
         let defaultVocabulary = `=== Super Minds 0 ===
 [Unit 0]
 hello | A friendly greeting
@@ -1149,6 +1172,10 @@ notebook | Write notes in this`;
                 return;
             }
             
+            // Lưu thông tin level và unit đã chọn
+            selectedLevel = level;
+            selectedUnit = unit;
+            
             // Parse từ điển
             const wordsArray = parseVocabulary(level, unit);
             
@@ -1250,6 +1277,13 @@ notebook | Write notes in this`;
 
             // Set up scoreboard based on game mode
             setupScoreboard();
+            
+            // Hiển thị thông tin Level và Unit
+            if (selectedLevel && selectedUnit) {
+                document.getElementById('currentVocabInfo').style.display = 'block';
+                document.getElementById('currentLevelDisplay').textContent = selectedLevel;
+                document.getElementById('currentUnitDisplay').textContent = selectedUnit;
+            }
 
             // Set difficulty badge
             const badge = document.getElementById('difficultyBadge');
@@ -1720,9 +1754,20 @@ notebook | Write notes in this`;
             const winnerTeam = document.getElementById('winnerTeam');
             const finalScores = document.getElementById('finalScores');
             const gameModeInfo = document.getElementById('gameModeInfo');
+            const finalLevel = document.getElementById('finalLevel');
+            const finalUnit = document.getElementById('finalUnit');
 
             let winner = '';
             let winnerColor = '';
+
+            // Hiển thị thông tin Level và Unit
+            if (selectedLevel && selectedUnit) {
+                finalLevel.textContent = selectedLevel;
+                finalUnit.textContent = selectedUnit;
+                document.getElementById('vocabularyInfo').style.display = 'block';
+            } else {
+                document.getElementById('vocabularyInfo').style.display = 'none';
+            }
 
             if (gameMode === 'team') {
                 // Hiển thị thông tin chế độ chơi
@@ -1745,10 +1790,10 @@ notebook | Write notes in this`;
                     <div style="margin-top: 10px; font-size: 20px;">Total words played: <strong>${words.length}</strong></div>
                 `;
             } else {
-                // SOLO MODE - SỬA LỖI KHÔNG KẾT THÚC GAME
+                // SOLO MODE
                 gameModeInfo.innerHTML = `<strong>Game Mode:</strong> Solo Player | <strong>Difficulty:</strong> ${difficulty.toUpperCase()}`;
                 
-                winner = '🎯 CONGRATULATIONS! 🎯';
+                winner = 'Well done!';
                 winnerColor = '#27ae60';
                 finalScores.innerHTML = `
                     <div>🎯 Your Final Score: <strong>${soloScore}</strong> points</div>
@@ -1785,6 +1830,8 @@ notebook | Write notes in this`;
             timeLeft = 30;
             bonusPoints = 0;
             gameMode = 'team';
+            selectedLevel = "";
+            selectedUnit = "";
             
             // Reset UI
             document.getElementById('winnerModal').style.display = 'none';
@@ -1793,6 +1840,7 @@ notebook | Write notes in this`;
             document.getElementById('setupSection').style.display = 'none';
             document.getElementById('wordInput').value = '';
             document.getElementById('vocabPreview').style.display = 'none';
+            document.getElementById('currentVocabInfo').style.display = 'none';
             document.getElementById('timer').textContent = '30';
             document.getElementById('timer').className = 'timer';
             document.getElementById('bonusPoints').textContent = '';
