@@ -21,6 +21,47 @@
             align-items: center;
         }
 
+        #logoContainer {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            animation: logoShake 3s ease-in-out infinite;
+        }
+
+        #gameLogo {
+            width: 120px;
+            height: auto;
+            border-radius: 15px;
+            /*box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);*/
+            transition: transform 0.3s;
+        }
+
+        #gameLogo:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes logoShake {
+            0%, 100% { 
+                transform: rotate(-5deg) translateY(0px); 
+            }
+            25% { 
+                transform: rotate(5deg) translateY(-5px); 
+            }
+            50% { 
+                transform: rotate(-5deg) translateY(5px); 
+            }
+            75% { 
+                transform: rotate(5deg) translateY(-5px); 
+            }
+        }
+
+        @media (max-width: 768px) {
+            #gameLogo {
+                width: 80px;
+            }
+        }
+
         .container {
             background: white;
             border-radius: 20px;
@@ -179,6 +220,11 @@
 
         .btn-success {
             background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+            color: white;
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
             color: white;
         }
 
@@ -634,13 +680,6 @@
             position: fixed;
             top: 20px;
             right: 20px;
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            background: white;
-            padding: 10px 15px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             z-index: 100;
         }
 
@@ -648,29 +687,53 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
-            padding: 8px 15px;
-            border-radius: 8px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
             cursor: pointer;
-            font-size: 20px;
+            font-size: 24px;
             transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .music-btn:hover {
             transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
         }
 
         .music-btn.muted {
             background: #95a5a6;
         }
 
-        .volume-control {
+        .end-game-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             display: flex;
             align-items: center;
-            gap: 5px;
+            justify-content: center;
+            text-align: center;
+            padding: 5px;
         }
 
-        .volume-slider {
-            width: 100px;
+        .end-game-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
         }
 
         .pause-overlay {
@@ -719,20 +782,35 @@
                 padding: 15px 25px;
                 font-size: 16px;
             }
+            
+            .music-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+            
+            .end-game-btn {
+                width: 55px;
+                height: 55px;
+                font-size: 12px;
+                bottom: 15px;
+                right: 15px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="music-control">
-            <button id="musicToggle" class="music-btn" onclick="toggleMusic()">♫</button>
-            <div class="volume-control">
-                <span>🔊</span>
-                <input type="range" id="volumeSlider" class="volume-slider" min="0" max="100" value="50" onchange="changeVolume(this.value)">
-                <span id="volumeText">50%</span>
-            </div>
-        </div>
+    <div id="logoContainer">
+        <img src="logo.png" alt="Super Minds Logo" id="gameLogo">
+    </div>
 
+    <div class="music-control">
+        <button id="musicToggle" class="music-btn" onclick="toggleMusic()">♫</button>
+    </div>
+
+    <button id="endGameBtn" class="end-game-btn" onclick="endGameEarly()" style="display: none;">KẾT THÚC</button>
+
+    <div class="container">
         <h1>🎯 Letter Grid Collector 🎯</h1>
 
         <div id="modeSection" class="mode-section">
@@ -806,6 +884,9 @@
                     <div class="info-box">
                         ⏱️ Tốc độ: <span id="speedLevel">1</span>
                     </div>
+                    <div class="info-box" style="background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);">
+                        📚 Từ mở rộng: <span id="bonusCount">0</span>
+                    </div>
                 </div>
             </div>
 
@@ -846,7 +927,7 @@
                     <div id="completionStats"></div>
                 </div>
                 <div id="bonusWordsSection" class="bonus-words-section" style="display: none;">
-                    <h3>⭐ Từ Bonus (Level cao hơn hoặc Mở rộng)</h3>
+                    <h3>⭐ Từ Mở Rộng Đã Tìm Được</h3>
                     <div class="word-list-items" id="bonusWordsList"></div>
                 </div>
                 <div id="wordListSection" class="word-list" style="display: none;">
@@ -1120,6 +1201,7 @@
             document.getElementById('combo').textContent = currentCombo;
             document.getElementById('speedLevel').textContent = speedLevel;
             document.getElementById('hintCount').textContent = hintsRemaining;
+            document.getElementById('bonusCount').textContent = '0';
             document.getElementById('comboDisplay').style.display = 'none';
             document.getElementById('progressText').textContent = `0 / ${targetWords.length}`;
             document.getElementById('progressBar').style.width = '0%';
@@ -1131,6 +1213,7 @@
             document.getElementById('modeSection').style.display = 'none';
             document.getElementById('setupSection').style.display = 'none';
             document.getElementById('gameSection').style.display = 'block';
+            document.getElementById('endGameBtn').style.display = 'block';
             
             initializeGrid();
             prepareNextWord();
@@ -1242,23 +1325,40 @@
             
             const currentWord = selectedCells.map(i => gridCells[i].letter).join('').toLowerCase();
             
+            // 1. Kiểm tra trong targetWords (từ vựng bài học)
             const matchingWord = targetWords.find(word => 
                 word === currentWord && !completedWords.includes(word)
             );
             
             if (matchingWord) {
                 correctWord(matchingWord, false);
-            } else {
-                const bonusWord = allVocabWords.find(word => 
-                    word === currentWord && !completedWords.includes(word) && !bonusWords.includes(word)
-                );
-                
-                if (bonusWord) {
-                    correctWord(bonusWord, true);
-                } else {
-                    wrongWord();
-                }
+                return;
             }
+            
+            // 2. Kiểm tra trong từ vựng mở rộng (expansionVocab)
+            const expansionMatch = expansionVocab.find(word => 
+                word === currentWord && !bonusWords.includes(word)
+            );
+            
+            if (expansionMatch) {
+                correctWord(expansionMatch, true);
+                return;
+            }
+            
+            // 3. Kiểm tra trong toàn bộ thư viện từ vựng (allVocabWords)
+            const allVocabMatch = allVocabWords.find(word => 
+                word === currentWord && !completedWords.includes(word) && !bonusWords.includes(word)
+            );
+            
+            if (allVocabMatch) {
+                // Kiểm tra xem từ này có thuộc expansion không
+                const isExpansionWord = expansionVocab.includes(allVocabMatch);
+                correctWord(allVocabMatch, isExpansionWord);
+                return;
+            }
+            
+            // 4. Nếu không tìm thấy trong bất kỳ danh sách nào
+            wrongWord();
         }
 
         function correctWord(word, isBonus) {
@@ -1283,16 +1383,24 @@
             document.getElementById('score').textContent = currentScore;
             
             if (isBonus) {
-                bonusWords.push(word);
+                // Thêm vào bonusWords nếu chưa có
+                if (!bonusWords.includes(word)) {
+                    bonusWords.push(word);
+                    // Cập nhật hiển thị số lượng từ mở rộng
+                    document.getElementById('bonusCount').textContent = bonusWords.length;
+                }
             } else {
-                completedWords.push(word);
-                updateProgress();
+                // Thêm vào completedWords nếu chưa có
+                if (!completedWords.includes(word)) {
+                    completedWords.push(word);
+                    updateProgress();
+                }
             }
             
             const feedbackEl = document.getElementById('feedback');
             feedbackEl.className = 'feedback correct';
             if (isBonus) {
-                feedbackEl.textContent = `⭐ BONUS: ${word.toUpperCase()} (+${totalScore} điểm x1.5!)`;
+                feedbackEl.textContent = `⭐ TỪ MỞ RỘNG: ${word.toUpperCase()} (+${totalScore} điểm x1.5!)`;
             } else {
                 feedbackEl.textContent = `✅ ${word.toUpperCase()} (+${totalScore} điểm)`;
             }
@@ -1319,7 +1427,12 @@
                 increaseSpeed();
             }
             
-            if (completedWords.length >= targetWords.length) {
+            // Kiểm tra xem đã hoàn thành tất cả targetWords chưa
+            const allTargetWordsCompleted = targetWords.every(word => 
+                completedWords.includes(word)
+            );
+            
+            if (allTargetWordsCompleted) {
                 endGame(true);
             }
         }
@@ -1398,6 +1511,12 @@
             document.getElementById('pauseBtn').textContent = isPaused ? '▶️ Resume' : '⏸️ Pause';
         }
 
+        function endGameEarly() {
+            if (confirm('Bạn có chắc muốn kết thúc game sớm? Điểm số hiện tại sẽ được lưu lại.')) {
+                endGame(false);
+            }
+        }
+
         function increaseSpeed() {
             speedLevel++;
             document.getElementById('speedLevel').textContent = speedLevel;
@@ -1422,6 +1541,7 @@
         function endGame(completed) {
             isGameOver = true;
             clearInterval(letterSpawnInterval);
+            document.getElementById('endGameBtn').style.display = 'none';
             
             const modal = document.getElementById('gameOverModal');
             const modalTitle = document.getElementById('modalTitle');
@@ -1437,8 +1557,8 @@
                 modalTitle.textContent = '🎉 Chúc Mừng! 🎉';
                 modalTitle.style.color = '#27ae60';
             } else {
-                modalTitle.textContent = '😔 Game Over';
-                modalTitle.style.color = '#e74c3c';
+                modalTitle.textContent = '🏁 Kết Thúc';
+                modalTitle.style.color = '#3498db';
             }
             
             finalScore.innerHTML = `<strong>Tổng Điểm:</strong> ${currentScore} 💰`;
@@ -1460,6 +1580,16 @@
                     wordItem.textContent = word;
                     bonusWordsList.appendChild(wordItem);
                 });
+                
+                // Thêm thông báo đặc biệt về từ mở rộng
+                const bonusMessage = document.createElement('div');
+                bonusMessage.style.marginTop = '10px';
+                bonusMessage.style.padding = '10px';
+                bonusMessage.style.backgroundColor = '#fff9e6';
+                bonusMessage.style.borderRadius = '8px';
+                bonusMessage.style.fontSize = '14px';
+                bonusMessage.innerHTML = `🎉 Bạn đã tìm thấy <strong>${bonusWords.length}</strong> từ mở rộng!`;
+                bonusWordsSection.appendChild(bonusMessage);
             } else {
                 bonusWordsSection.style.display = 'none';
             }
@@ -1534,6 +1664,7 @@
         function playAgain() {
             document.getElementById('gameOverModal').style.display = 'none';
             document.getElementById('gameSection').style.display = 'none';
+            document.getElementById('endGameBtn').style.display = 'none';
             document.getElementById('modeSection').style.display = 'block';
             document.getElementById('setupSection').style.display = 'none';
             
@@ -1586,14 +1717,6 @@
                     alert('Please interact with the page to enable audio');
                 });
             }
-        }
-
-        function changeVolume(value) {
-            backgroundMusic.volume = value / 100;
-            correctSound.volume = value / 100;
-            wrongSound.volume = value / 100;
-            comboSound.volume = value / 100;
-            document.getElementById('volumeText').textContent = value + '%';
         }
     </script>
 </body>
