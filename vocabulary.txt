@@ -1,0 +1,24 @@
+=== Super Minds 0 ===
+[Unit 0]
+hello | A friendly greeting
+goodbye | Saying when leaving
+teacher | Person who teaches
+
+[Unit 1]
+book | You read this
+pencil | You write with this
+classroom | Where you learn
+
+=== Super Minds 1 ===
+[Unit 0]
+family | Mother, father, brothers, sisters
+house | Place where you live
+school | Place of learning
+
+[Unit 1]
+desk | You sit at this
+computer | Electronic device for learning
+
+[Unit 2]
+ax | ax
+axxx | axxx
