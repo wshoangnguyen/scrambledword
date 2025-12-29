@@ -1226,17 +1226,35 @@
         }
 
         function startGame() {
-            // Kiểm tra đã load từ vựng chưa
-            if (!words || words.length === 0) {
-        alert('Please load vocabulary first! Select Level and Unit, then click LOAD VOCABULARY.');
+                console.log('DEBUG: Starting game with', words.length, 'words');
+                console.log('DEBUG: Game state - currentIndex:', currentIndex, 'currentWord:', currentWord);
+    // KIỂM TRA KỸ: Nếu words rỗng hoặc undefined
+    if (!words || words.length === 0) {
+        console.error('DEBUG: words array is empty!');
+        alert('No vocabulary loaded! Please select Level and Unit, then click LOAD VOCABULARY.');
         return;
     }
 
-            // Initialize game
-            currentIndex = 0;
-            redTeamScore = 0;
-            blueTeamScore = 0;
-            soloScore = 0;
+    // ĐẢM BẢO RESET HOÀN TOÀN TRƯỚC KHI BẮT ĐẦU
+    currentIndex = 0;
+    redTeamScore = 0;
+    blueTeamScore = 0;
+    soloScore = 0;
+    currentWord = '';
+    currentAnswer = '';
+    correctAnswer = false;
+    currentPoints = 0;
+    prefilledPositions = [];
+    giftType = '';
+    selectedTeam = '';
+    timeLeft = 30;
+    bonusPoints = 0;
+                // Reset timer display
+    const timerDiv = document.getElementById('timer');
+    if (timerDiv) {
+        timerDiv.textContent = '30';
+        timerDiv.className = 'timer';
+    }
             
             document.getElementById('setupSection').style.display = 'none';
             document.getElementById('gameSection').style.display = 'block';
@@ -1284,6 +1302,31 @@
         }
 
         function loadWord() {
+                // FIX BUG: Clean up trước khi load từ mới
+    stopTimer(); // Đảm bảo timer dừng
+    
+    // Reset answer và letters container
+    currentAnswer = '';
+    correctAnswer = false;
+    prefilledPositions = [];
+    
+    // Xóa các letter buttons cũ
+    const container = document.getElementById('lettersContainer');
+    if (container) {
+        container.innerHTML = '';
+    }
+    
+    // Reset UI elements
+    document.getElementById('feedback').textContent = '';
+    document.getElementById('feedback').className = 'feedback';
+    document.getElementById('teamButtons').style.display = 'none';
+    document.getElementById('soloButtons').style.display = 'none';
+    document.getElementById('nextButtonContainer').style.display = 'none';
+    document.getElementById('bonusPoints').textContent = '';
+    
+    // Reset answer display
+    document.getElementById('answerText').textContent = '___';
+    document.getElementById('answerText').className = 'answer-text';
             if (currentIndex >= words.length) {
                 endGame();
                 return;
@@ -1777,14 +1820,17 @@
         }
 
 function playAgain() {
-    // Stop timer
-    stopTimer();
+    // DỪNG TIMER HOÀN TOÀN
+    if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+    }
     
     // Lưu lại Level và Unit hiện tại TRƯỚC KHI reset
     const lastLevel = selectedLevel;
     const lastUnit = selectedUnit;
     
-    // Reset all variables - GIỮ LẠI selectedLevel và selectedUnit
+    // RESET TẤT CẢ BIẾN GAME VỀ TRẠNG THÁI BAN ĐẦU
     words = [];
     currentIndex = 0;
     currentWord = '';
@@ -1800,18 +1846,30 @@ function playAgain() {
     timeLeft = 30;
     bonusPoints = 0;
     gameMode = 'team';
-    // KHÔNG reset selectedLevel và selectedUnit ở đây!
-    // ĐỂ NGUYÊN: selectedLevel và selectedUnit giữ giá trị cũ
+    // KHÔNG reset selectedLevel và selectedUnit
     
-    // Reset UI
+    // XÓA TẤT CẢ LETTER BUTTONS (quan trọng!)
+    const lettersContainer = document.getElementById('lettersContainer');
+    if (lettersContainer) {
+        lettersContainer.innerHTML = '';
+    }
+    
+    // Reset UI COMPLETELY
     document.getElementById('winnerModal').style.display = 'none';
     document.getElementById('gameSection').style.display = 'none';
     document.getElementById('modeSection').style.display = 'block';
     document.getElementById('setupSection').style.display = 'none';
     document.getElementById('vocabPreview').style.display = 'none';
     document.getElementById('currentVocabInfo').style.display = 'none';
-    document.getElementById('timer').textContent = '30';
-    document.getElementById('timer').className = 'timer';
+    
+    // Reset timer display
+    const timerDiv = document.getElementById('timer');
+    if (timerDiv) {
+        timerDiv.textContent = '30';
+        timerDiv.className = 'timer';
+        timerDiv.classList.remove('warning', 'danger');
+    }
+    
     document.getElementById('bonusPoints').textContent = '';
     document.getElementById('feedback').textContent = '';
     document.getElementById('answerText').textContent = '___';
@@ -1822,7 +1880,7 @@ function playAgain() {
     document.getElementById('giftOkButton').style.display = 'block';
     document.getElementById('startGameBtn').disabled = true;
     
-    // Reset selections trên UI (nhưng sẽ khôi phục sau)
+    // Reset selections trên UI
     document.getElementById('levelSelect').value = '';
     document.getElementById('unitSelect').value = '';
     document.getElementById('unitSelect').disabled = true;
@@ -1849,7 +1907,7 @@ function playAgain() {
         if (lastLevel && lastUnit) {
             restoreSelection(lastLevel, lastUnit);
         }
-    }, 800); // Đợi file được tải xong
+    }, 800);
 }
         // Hàm khôi phục selection cũ sau khi Play Again
 function restoreSelection(level, unit) {
@@ -1858,60 +1916,76 @@ function restoreSelection(level, unit) {
     const loadBtn = document.querySelector('.load-vocab-btn');
     const startBtn = document.getElementById('startGameBtn');
     
+    // Kiểm tra vocabularyStructure đã được load chưa
+    if (!vocabularyStructure || Object.keys(vocabularyStructure).length === 0) {
+        console.log('Vocabulary structure not loaded yet, retrying...');
+        setTimeout(() => restoreSelection(level, unit), 500);
+        return;
+    }
+    
     // Chọn Level
     if (levelSelect) {
         levelSelect.value = level;
         
-        // Kích hoạt sự kiện change để load units
         if (levelSelect.value) {
+            // Kích hoạt sự kiện change
             const changeEvent = new Event('change');
             levelSelect.dispatchEvent(changeEvent);
             
-            // Chờ một chút để units được load
             setTimeout(() => {
                 // Chọn Unit
                 if (unitSelect) {
                     unitSelect.value = unit;
                     
-                    // Tự động load vocabulary từ Level và Unit cũ
                     if (unitSelect.value && loadBtn) {
                         loadBtn.disabled = false;
                         
-                        // Load từ vựng
-                        selectedLevel = level;
-                        selectedUnit = unit;
-                        
-                        // Lấy từ vựng từ cấu trúc
-                        const vocabList = vocabularyStructure[level][unit];
-                        if (vocabList && vocabList.length > 0) {
-                            // Parse từ vựng
-                            words = [];
-                            for (let line of vocabList) {
-                                const parts = line.split('|').map(s => s.trim());
-                                if (parts.length >= 2 && parts[0] && parts[1]) {
-                                    words.push({
-                                        word: parts[0].toLowerCase(),
-                                        hint: parts[1]
-                                    });
-                                }
-                            }
+                        // Đảm bảo vocabularyStructure[level] tồn tại
+                        if (vocabularyStructure[level] && vocabularyStructure[level][unit]) {
+                            // Load từ vựng
+                            loadVocabularyFromStructure(level, unit);
                             
-                            if (words.length > 0) {
-                                // Hiển thị thông báo
-                                document.getElementById('vocabPreview').style.display = 'block';
-                                document.getElementById('vocabPreview').textContent = 
-                                    `✅ Previous selection restored: ${level} - ${unit} (${words.length} words)`;
-                                
-                                // Enable start game button
-                                if (startBtn) {
-                                    startBtn.disabled = false;
-                                }
-                            }
+                            // Hiển thị thông báo
+                            document.getElementById('vocabPreview').style.display = 'block';
+                            document.getElementById('vocabPreview').textContent = 
+                                `✅ Previous selection restored: ${level} - ${unit}`;
                         }
                     }
                 }
             }, 300);
         }
+    }
+}
+
+// Hàm mới: Load từ vựng từ structure
+function loadVocabularyFromStructure(level, unit) {
+    selectedLevel = level;
+    selectedUnit = unit;
+    
+    const vocabList = vocabularyStructure[level][unit];
+    if (!vocabList || vocabList.length === 0) {
+        console.error('No vocabulary found for', level, unit);
+        return;
+    }
+    
+    // Parse từ vựng
+    words = [];
+    for (let line of vocabList) {
+        const parts = line.split('|').map(s => s.trim());
+        if (parts.length >= 2 && parts[0] && parts[1]) {
+            words.push({
+                word: parts[0].toLowerCase(),
+                hint: parts[1]
+            });
+        }
+    }
+    
+    console.log(`Loaded ${words.length} words from ${level} - ${unit}`);
+    
+    // Enable start game button
+    const startBtn = document.getElementById('startGameBtn');
+    if (startBtn && words.length > 0) {
+        startBtn.disabled = false;
     }
 }
     </script>
