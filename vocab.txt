@@ -1,0 +1,23 @@
+=== Super Minds 0 ===
+[Unit 0]
+hello
+goodbye
+teacher
+
+[Unit 1]
+book
+pencil
+classroom
+
+=== Super Minds 1 ===
+[Unit 0]
+family
+house
+school
+
+[Unit 1]
+desk
+computer
+
+=== Expandtion ===
+some
