@@ -31,7 +31,7 @@
         .header {
             background: #a5221c;
             background-image: radial-gradient(circle at 10% 20%, #c23b2e, #831a12);
-            padding: 28px 24px;
+            padding: 10px 10px;
             text-align: center;
             color: #ffefb9;
             border-bottom: 6px solid #f7bc45;
@@ -86,7 +86,7 @@
         .input-group {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 10px;
             align-items: flex-end;
             justify-content: center;
         }
@@ -145,14 +145,6 @@
             border: 1px solid #f7d99e;
             box-shadow: inset 0 1px 4px #0001, 0 6px 12px -8px rgba(0,0,0,0.2);
         }
-        .result-title {
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: #a32f20;
-            border-left: 7px solid #f7bc45;
-            padding-left: 18px;
-            margin-bottom: 18px;
-        }
         .badge-year {
             background: #e4c48b;
             display: inline-block;
@@ -166,7 +158,8 @@
         .grid-parts {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px 10px;
+            justify-content: center;
+            gap: 5px 5px;
         }
         .part-card {
             background: #fff6e8;
@@ -220,7 +213,7 @@
             border-top: 1px solid #f7d89c;
         }
         @media (max-width: 600px) {
-            .form-container { padding: 20px; }
+            .form-container { padding: 2px; gap: 2px; }
             .result-area { margin: 12px 20px 30px; }
             .part-card { width: 120px; font-size: 0.85rem; }
             .field { min-width: 100px; }
@@ -230,13 +223,12 @@
 <body>
 <div class="card">
     <div class="header">
-        <h1> BỘ PHẬN & 12 CON GIÁP </h1>
-        <p>Luận giải theo tháng sinh Âm lịch — Hỗ trợ nhập Dương lịch tự động đổi sang Âm lịch</p>
+        <h1> KMĐG </h1>
     </div>
     
     <div class="calendar-toggle">
-        <button id="toggleLunarBtn" class="toggle-btn active">📅 Nhập Âm lịch</button>
-        <button id="toggleSolarBtn" class="toggle-btn">☀️ Nhập Dương lịch</button>
+        <button id="toggleLunarBtn" class="toggle-btn active"> Âm lịch</button>
+        <button id="toggleSolarBtn" class="toggle-btn">Dương lịch</button>
     </div>
 
     <div class="form-container">
@@ -259,14 +251,11 @@
     </div>
 
     <div id="resultPanel" class="result-area">
-        <div class="result-title"> Kết quả</div>
         <div id="infoYearMonth" class="badge-year">--</div>
         <div id="partListContainer">
             <div class="empty-note">🌟 Chọn loại lịch, nhập thông tin và nhấn nút để xem kết quả.</div>
         </div>
     </div>
-    <footer>⚡ Nguyên tắc: Xuất phát từ (tháng+1) gán cho Gan, lần lượt các bộ phận tiếp theo theo vòng tròn, bỏ qua con giáp năm.</footer>
-</div>
 
 <script>
     // ---------- PHẦN 1: THUẬT TOÁN ÂM LỊCH (DỰA TRÊN calrules.html) ----------
@@ -534,7 +523,7 @@
                 for (let item of parts) {
                     html += `<div class="part-card"><span class="part-name">${item.part}</span><span class="part-animal">${item.animal}</span></div>`;
                 }
-                html += `</div><div class="info-note">✨ Nguyên tắc: xuất phát từ tháng ${month}+1 = ${startOrder} (${startAnimal}) gán cho Gan, lần lượt các bộ phận tiếp theo theo vòng tròn, bỏ qua ${yearAnimal} (con giáp năm).</div>`;
+                html += `</div><div class="info-note">✨ Xuất phát từ tháng ${month}+1 = ${startOrder} (${startAnimal}) gán cho Gan, bỏ qua ${yearAnimal} (con giáp năm).</div>`;
                 partListContainer.innerHTML = html;
             } catch (err) {
                 partListContainer.innerHTML = `<div class="empty-note">❌ Lỗi: ${err.message}</div>`;
