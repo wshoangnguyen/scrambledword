@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Luận giải bộ phận - 12 con giáp (Hỗ trợ Dương lịch)</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(145deg, #fef7e0 0%, #fff3cf 100%);
+            font-family: 'Segoe UI', 'Roboto', 'Noto Sans', system-ui, 'Helvetica Neue', sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .card {
+            max-width: 950px;
+            width: 100%;
+            background: #fffef7;
+            border-radius: 64px 48px 64px 48px;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2), 0 2px 8px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: all 0.2s ease;
+            border: 1px solid #f3d382;
+        }
+        .header {
+            background: #a5221c;
+            background-image: radial-gradient(circle at 10% 20%, #c23b2e, #831a12);
+            padding: 28px 24px;
+            text-align: center;
+            color: #ffefb9;
+            border-bottom: 6px solid #f7bc45;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 0 #4a0e0a;
+        }
+        .header p {
+            margin: 12px 0 0;
+            font-size: 0.95rem;
+            font-style: italic;
+            opacity: 0.9;
+        }
+        .calendar-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            background: #fff6e8;
+            padding: 15px 30px 0 30px;
+        }
+        .toggle-btn {
+            background: #e9dbbc;
+            border: none;
+            padding: 8px 24px;
+            border-radius: 40px;
+            font-weight: bold;
+            color: #6b3f1c;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: none;
+            width: auto;
+            margin: 0;
+            font-size: 1rem;
+        }
+        .toggle-btn.active {
+            background: #d98f2b;
+            color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .form-container {
+            display: flex;
+            justify-content: center;
+            padding: 20px 30px;
+            gap: 20px;
+            background: #fff6e8;
+            flex-wrap: wrap;
+        }
+        .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: flex-end;
+            justify-content: center;
+        }
+        .field {
+            min-width: 130px;
+        }
+        .field label {
+            display: block;
+            font-weight: 700;
+            color: #6b3f1c;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+        .field input, .field select {
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 1rem;
+            border: 2px solid #edd7ae;
+            border-radius: 40px;
+            background: white;
+            font-weight: 500;
+            transition: 0.2s;
+            outline: none;
+            font-family: inherit;
+        }
+        .field input:focus, .field select:focus {
+            border-color: #c25d3a;
+            box-shadow: 0 0 0 3px rgba(194, 93, 58, 0.2);
+        }
+        button {
+            background: #d98f2b;
+            border: none;
+            width: 200px;
+            padding: 12px 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: white;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 5px 0 #7b3e10;
+            font-family: inherit;
+            margin-top: 12px;
+            margin-bottom: 12px;
+        }
+        button:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #7b3e10;
+        }
+        .result-area {
+            background: #fef4e2;
+            margin: 12px 30px 30px 30px;
+            border-radius: 48px;
+            padding: 22px 24px;
+            border: 1px solid #f7d99e;
+            box-shadow: inset 0 1px 4px #0001, 0 6px 12px -8px rgba(0,0,0,0.2);
+        }
+        .result-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #a32f20;
+            border-left: 7px solid #f7bc45;
+            padding-left: 18px;
+            margin-bottom: 18px;
+        }
+        .badge-year {
+            background: #e4c48b;
+            display: inline-block;
+            padding: 5px 14px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 18px;
+            color: #3e2a1a;
+        }
+        .grid-parts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 10px;
+        }
+        .part-card {
+            background: #fff6e8;
+            width: 135px;
+            border-radius: 60px;
+            padding: 6px 18px 6px 14px;
+            display: inline-flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 8px;
+            font-weight: 600;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            border: 1px solid #ffe1aa;
+        }
+        .part-name {
+            font-size: 1rem;
+            color: #784e22;
+        }
+        .part-animal {
+            background: #c97e2c;
+            color: white;
+            border-radius: 50px;
+            padding: 2px 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+        .empty-note {
+            color: #bb5e2e;
+            font-style: italic;
+            background: #fff0db;
+            padding: 14px;
+            border-radius: 32px;
+            text-align: center;
+        }
+        .info-note {
+            margin-top: 16px;
+            font-size: 0.75rem;
+            background: #faeecb;
+            border-radius: 24px;
+            padding: 10px;
+            text-align: center;
+            color: #7a4a1a;
+        }
+        footer {
+            font-size: 0.7rem;
+            text-align: center;
+            padding: 16px 24px 22px;
+            color: #b97f48;
+            background: #fff3e0;
+            border-top: 1px solid #f7d89c;
+        }
+        @media (max-width: 600px) {
+            .form-container { padding: 20px; }
+            .result-area { margin: 12px 20px 30px; }
+            .part-card { width: 120px; font-size: 0.85rem; }
+            .field { min-width: 100px; }
+        }
+    </style>
+</head>
+<body>
+<div class="card">
+    <div class="header">
+        <h1> BỘ PHẬN & 12 CON GIÁP </h1>
+        <p>Luận giải theo tháng sinh Âm lịch — Hỗ trợ nhập Dương lịch tự động đổi sang Âm lịch</p>
+    </div>
+    
+    <div class="calendar-toggle">
+        <button id="toggleLunarBtn" class="toggle-btn active">📅 Nhập Âm lịch</button>
+        <button id="toggleSolarBtn" class="toggle-btn">☀️ Nhập Dương lịch</button>
+    </div>
+
+    <div class="form-container">
+        <div class="input-group">
+            <div class="field" id="yearField">
+                <label id="yearLabel">Năm sinh (Âm lịch)</label>
+                <input type="number" id="yearInput" min="1900" max="2200" step="1" value="1965" placeholder="VD: 1965">
+            </div>
+            <div class="field" id="monthField">
+                <label id="monthLabel">Tháng sinh (Âm lịch)</label>
+                <input type="number" id="monthInput" min="1" max="12" step="1" value="12" placeholder="1-12">
+            </div>
+            <!-- Trường ngày chỉ hiển thị khi chọn Dương lịch -->
+            <div class="field" id="dayField" style="display: none;">
+                <label id="dayLabel">Ngày sinh</label>
+                <input type="number" id="dayInput" min="1" max="31" step="1" value="15" placeholder="Ngày">
+            </div>
+        </div>
+        <button id="calcBtn"> XEM KẾT QUẢ </button>
+    </div>
+
+    <div id="resultPanel" class="result-area">
+        <div class="result-title"> Kết quả</div>
+        <div id="infoYearMonth" class="badge-year">--</div>
+        <div id="partListContainer">
+            <div class="empty-note">🌟 Chọn loại lịch, nhập thông tin và nhấn nút để xem kết quả.</div>
+        </div>
+    </div>
+    <footer>⚡ Nguyên tắc: Xuất phát từ (tháng+1) gán cho Gan, lần lượt các bộ phận tiếp theo theo vòng tròn, bỏ qua con giáp năm.</footer>
+</div>
+
+<script>
+    // ---------- PHẦN 1: THUẬT TOÁN ÂM LỊCH (DỰA TRÊN calrules.html) ----------
+    const PI = Math.PI;
+    const INT = Math.floor; // Hàm lấy phần nguyên (hỗ trợ số dương)
+
+    // Đổi ngày dương ra số ngày Julius (Gregorian)
+    function jdFromDate(dd, mm, yy) {
+        let a = INT((14 - mm) / 12);
+        let y = yy + 4800 - a;
+        let m = mm + 12 * a - 3;
+        let jd = dd + INT((153 * m + 2) / 5) + 365 * y + INT(y / 4) - INT(y / 100) + INT(y / 400) - 32045;
+        if (jd < 2299161) {
+            jd = dd + INT((153 * m + 2) / 5) + 365 * y + INT(y / 4) - 32083;
+        }
+        return jd;
+    }
+
+    // Đổi số ngày Julius ra ngày dương
+    function jdToDate(jd) {
+        let a, b, c, d, e, m, day, month, year;
+        if (jd > 2299160) {
+            a = jd + 32044;
+            b = INT((4 * a + 3) / 146097);
+            c = a - INT((b * 146097) / 4);
+        } else {
+            b = 0;
+            c = jd + 32082;
+        }
+        d = INT((4 * c + 3) / 1461);
+        e = c - INT((1461 * d) / 4);
+        m = INT((5 * e + 2) / 153);
+        day = e - INT((153 * m + 2) / 5) + 1;
+        month = m + 3 - 12 * INT(m / 10);
+        year = b * 100 + d - 4800 + INT(m / 10);
+        return { day, month, year };
+    }
+
+    // Tính ngày Sóc (New Moon) cho k
+    function getNewMoonDay(k, timeZone) {
+        let T = k / 1236.85;
+        let T2 = T * T;
+        let T3 = T2 * T;
+        let dr = PI / 180;
+        let Jd1 = 2415020.75933 + 29.53058868 * k + 0.0001178 * T2 - 0.000000155 * T3;
+        Jd1 = Jd1 + 0.00033 * Math.sin((166.56 + 132.87 * T - 0.009173 * T2) * dr);
+        let M = 359.2242 + 29.10535608 * k - 0.0000333 * T2 - 0.00000347 * T3;
+        let Mpr = 306.0253 + 385.81691806 * k + 0.0107306 * T2 + 0.00001236 * T3;
+        let F = 21.2964 + 390.67050646 * k - 0.0016528 * T2 - 0.00000239 * T3;
+        let C1 = (0.1734 - 0.000393 * T) * Math.sin(M * dr) + 0.0021 * Math.sin(2 * dr * M);
+        C1 = C1 - 0.4068 * Math.sin(Mpr * dr) + 0.0161 * Math.sin(dr * 2 * Mpr);
+        C1 = C1 - 0.0004 * Math.sin(dr * 3 * Mpr);
+        C1 = C1 + 0.0104 * Math.sin(dr * 2 * F) - 0.0051 * Math.sin(dr * (M + Mpr));
+        C1 = C1 - 0.0074 * Math.sin(dr * (M - Mpr)) + 0.0004 * Math.sin(dr * (2 * F + M));
+        C1 = C1 - 0.0004 * Math.sin(dr * (2 * F - M)) - 0.0006 * Math.sin(dr * (2 * F + Mpr));
+        C1 = C1 + 0.0010 * Math.sin(dr * (2 * F - Mpr)) + 0.0005 * Math.sin(dr * (2 * Mpr + M));
+        let deltat;
+        if (T < -11) deltat = 0.001 + 0.000839 * T + 0.0002261 * T2 - 0.00000845 * T3 - 0.000000081 * T * T3;
+        else deltat = -0.000278 + 0.000265 * T + 0.000262 * T2;
+        let JdNew = Jd1 + C1 - deltat;
+        return INT(JdNew + 0.5 + timeZone / 24);
+    }
+
+    // Tính kinh độ mặt trời, trả về cung (0-11)
+    function getSunLongitude(jdn, timeZone) {
+        let T = (jdn - 2451545.5 - timeZone / 24) / 36525;
+        let T2 = T * T;
+        let dr = PI / 180;
+        let M = 357.52910 + 35999.05030 * T - 0.0001559 * T2 - 0.00000048 * T * T2;
+        let L0 = 280.46645 + 36000.76983 * T + 0.0003032 * T2;
+        let DL = (1.914600 - 0.004817 * T - 0.000014 * T2) * Math.sin(dr * M);
+        DL = DL + (0.019993 - 0.000101 * T) * Math.sin(dr * 2 * M) + 0.000290 * Math.sin(dr * 3 * M);
+        let L = L0 + DL;
+        L = L * dr;
+        L = L - PI * 2 * INT(L / (PI * 2));
+        return INT(L / PI * 6);
+    }
+
+    // Tìm ngày bắt đầu tháng 11 âm lịch
+    function getLunarMonth11(yy, timeZone) {
+        let off = jdFromDate(31, 12, yy) - 2415021;
+        let k = INT(off / 29.530588853);
+        let nm = getNewMoonDay(k, timeZone);
+        let sunLong = getSunLongitude(nm, timeZone);
+        if (sunLong >= 9) {
+            nm = getNewMoonDay(k - 1, timeZone);
+        }
+        return nm;
+    }
+
+    // Tìm vị trí tháng nhuận (offset)
+    function getLeapMonthOffset(a11, timeZone) {
+        let k = INT((a11 - 2415021.076998695) / 29.530588853 + 0.5);
+        let last, arc, i = 1;
+        arc = getSunLongitude(getNewMoonDay(k + i, timeZone), timeZone);
+        do {
+            last = arc;
+            i++;
+            arc = getSunLongitude(getNewMoonDay(k + i, timeZone), timeZone);
+        } while (arc !== last && i < 14);
+        return i - 1;
+    }
+
+    // Đổi Dương lịch -> Âm lịch (timeZone = 7 cho VN)
+    function convertSolar2Lunar(dd, mm, yy, timeZone = 7) {
+        let dayNumber = jdFromDate(dd, mm, yy);
+        let k = INT((dayNumber - 2415021.076998695) / 29.530588853);
+        let monthStart = getNewMoonDay(k + 1, timeZone);
+        if (monthStart > dayNumber) {
+            monthStart = getNewMoonDay(k, timeZone);
+        }
+        let a11 = getLunarMonth11(yy, timeZone);
+        let b11 = a11;
+        let lunarYear;
+        if (a11 >= monthStart) {
+            lunarYear = yy;
+            a11 = getLunarMonth11(yy - 1, timeZone);
+        } else {
+            lunarYear = yy + 1;
+            b11 = getLunarMonth11(yy + 1, timeZone);
+        }
+        let lunarDay = dayNumber - monthStart + 1;
+        let diff = INT((monthStart - a11) / 29);
+        let lunarLeap = 0;
+        let lunarMonth = diff + 11;
+        if (b11 - a11 > 365) {
+            let leapMonthDiff = getLeapMonthOffset(a11, timeZone);
+            if (diff >= leapMonthDiff) {
+                lunarMonth = diff + 10;
+                if (diff === leapMonthDiff) {
+                    lunarLeap = 1;
+                }
+            }
+        }
+        if (lunarMonth > 12) {
+            lunarMonth = lunarMonth - 12;
+        }
+        if (lunarMonth >= 11 && diff < 4) {
+            lunarYear -= 1;
+        }
+        return { lunarDay, lunarMonth, lunarYear, lunarLeap };
+    }
+
+    // ---------- PHẦN 2: LUẬN GIẢI BỘ PHẬN & 12 CON GIÁP (GIỮ NGUYÊN THUẬT TOÁN GỐC) ----------
+    const ZODIAC_LIST = ["Dần", "Mẹo", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất", "Hợi", "Tý", "Sửu"];
+    const BODY_PARTS = ["Gan", "Mật", "Ruột", "Mào", "Khẩu", "Mỡ", "Móng", "Sừng", "Chân", "Răng"];
+    
+    const ANIMAL_TO_ORDER = {
+        "Dần": 1, "Mẹo": 2, "Thìn": 3, "Tỵ": 4, "Ngọ": 5, "Mùi": 6,
+        "Thân": 7, "Dậu": 8, "Tuất": 9, "Hợi": 10, "Tý": 11, "Sửu": 12
+    };
+    const ORDER_TO_ANIMAL = {
+        1: "Dần", 2: "Mẹo", 3: "Thìn", 4: "Tỵ", 5: "Ngọ", 6: "Mùi",
+        7: "Thân", 8: "Dậu", 9: "Tuất", 10: "Hợi", 11: "Tý", 12: "Sửu"
+    };
+
+    function getAnimalByYear(lunarYear) {
+        const baseYear = 1984;
+        let remainder = (lunarYear - baseYear) % 12;
+        if (remainder < 0) remainder += 12;
+        const mapRemainToAnimal = {
+            0: "Tý", 1: "Sửu", 2: "Dần", 3: "Mẹo", 4: "Thìn", 5: "Tỵ",
+            6: "Ngọ", 7: "Mùi", 8: "Thân", 9: "Dậu", 10: "Tuất", 11: "Hợi"
+        };
+        return mapRemainToAnimal[remainder];
+    }
+
+    function getAnimalByOrder(orderNum) {
+        return ORDER_TO_ANIMAL[orderNum];
+    }
+
+    // Tính bộ phận dựa trên tháng âm và năm âm
+    function computeParts(lunarMonth, lunarYear) {
+        const yearAnimal = getAnimalByYear(lunarYear);
+        const fullCircle = [...ZODIAC_LIST];
+        let startOrderNum = (lunarMonth + 1) % 12;
+        if (startOrderNum === 0) startOrderNum = 12;
+        const startAnimal = getAnimalByOrder(startOrderNum);
+        let startIdx = fullCircle.indexOf(startAnimal);
+        if (startIdx === -1) startIdx = 0;
+        
+        const availableAnimals = [];
+        let currentIdx = startIdx;
+        const totalNeeded = BODY_PARTS.length;
+        let maxLoop = 0;
+        while (availableAnimals.length < totalNeeded && maxLoop < 200) {
+            const candidate = fullCircle[currentIdx % 12];
+            if (candidate !== yearAnimal) {
+                availableAnimals.push(candidate);
+            }
+            currentIdx++;
+            maxLoop++;
+        }
+        const result = [];
+        for (let i = 0; i < BODY_PARTS.length; i++) {
+            result.push({
+                part: BODY_PARTS[i],
+                animal: availableAnimals[i] || "?"
+            });
+        }
+        return result;
+    }
+
+    // ---------- PHẦN 3: XỬ LÝ GIAO DIỆN & CHUYỂN ĐỔI ----------
+    let currentMode = "LUNAR"; // LUNAR or SOLAR
+
+    const toggleLunarBtn = document.getElementById("toggleLunarBtn");
+    const toggleSolarBtn = document.getElementById("toggleSolarBtn");
+    const yearInput = document.getElementById("yearInput");
+    const monthInput = document.getElementById("monthInput");
+    const dayInput = document.getElementById("dayInput");
+    const dayField = document.getElementById("dayField");
+    const yearLabel = document.getElementById("yearLabel");
+    const monthLabel = document.getElementById("monthLabel");
+    const calcBtn = document.getElementById("calcBtn");
+    const infoYearMonthDiv = document.getElementById("infoYearMonth");
+    const partListContainer = document.getElementById("partListContainer");
+
+    function updateUIMode() {
+        if (currentMode === "LUNAR") {
+            toggleLunarBtn.classList.add("active");
+            toggleSolarBtn.classList.remove("active");
+            yearLabel.innerText = "Năm sinh (Âm lịch)";
+            monthLabel.innerText = "Tháng sinh (Âm lịch)";
+            dayField.style.display = "none";
+            // Đặt lại giá trị mặc định Âm lịch đẹp
+            yearInput.value = 1965;
+            monthInput.value = 12;
+        } else {
+            toggleSolarBtn.classList.add("active");
+            toggleLunarBtn.classList.remove("active");
+            yearLabel.innerText = "Năm sinh (Dương lịch)";
+            monthLabel.innerText = "Tháng sinh (Dương lịch)";
+            dayField.style.display = "block";
+            // Giá trị mặc định dương lịch
+            yearInput.value = 1965;
+            monthInput.value = 12;
+            dayInput.value = 15;
+        }
+    }
+
+    // Hàm render chính: lấy dữ liệu từ input, nếu là Dương lịch thì đổi sang Âm lịch, rồi tính bộ phận
+    function renderResult() {
+        if (currentMode === "LUNAR") {
+            let month = parseInt(monthInput.value, 10);
+            let year = parseInt(yearInput.value, 10);
+            if (isNaN(month) || month < 1 || month > 12) {
+                partListContainer.innerHTML = `<div class="empty-note">⚠️ Tháng Âm lịch phải từ 1 đến 12.</div>`;
+                infoYearMonthDiv.innerText = `Tháng ${month} / Năm ${year} (không hợp lệ)`;
+                return;
+            }
+            if (isNaN(year) || year < 1900 || year > 2200) {
+                partListContainer.innerHTML = `<div class="empty-note">⚠️ Năm Âm lịch nên từ 1900 đến 2200.</div>`;
+                infoYearMonthDiv.innerText = `Năm ${year} (không hợp lệ)`;
+                return;
+            }
+            try {
+                const yearAnimal = getAnimalByYear(year);
+                const parts = computeParts(month, year);
+                const startOrderRaw = (month + 1) % 12;
+                const startOrder = startOrderRaw === 0 ? 12 : startOrderRaw;
+                const startAnimal = getAnimalByOrder(startOrder);
+                infoYearMonthDiv.innerHTML = `📅 Tháng ${month} âm lịch | Năm ${year} (${yearAnimal}) - Loại bỏ ${yearAnimal}`;
+                let html = `<div class="grid-parts">`;
+                for (let item of parts) {
+                    html += `<div class="part-card"><span class="part-name">${item.part}</span><span class="part-animal">${item.animal}</span></div>`;
+                }
+                html += `</div><div class="info-note">✨ Nguyên tắc: xuất phát từ tháng ${month}+1 = ${startOrder} (${startAnimal}) gán cho Gan, lần lượt các bộ phận tiếp theo theo vòng tròn, bỏ qua ${yearAnimal} (con giáp năm).</div>`;
+                partListContainer.innerHTML = html;
+            } catch (err) {
+                partListContainer.innerHTML = `<div class="empty-note">❌ Lỗi: ${err.message}</div>`;
+            }
+        } 
+        else { // SOLAR MODE
+            let day = parseInt(dayInput.value, 10);
+            let month = parseInt(monthInput.value, 10);
+            let year = parseInt(yearInput.value, 10);
+            if (isNaN(day) || isNaN(month) || isNaN(year)) {
+                partListContainer.innerHTML = `<div class="empty-note">⚠️ Vui lòng nhập đầy đủ ngày, tháng, năm Dương lịch.</div>`;
+                infoYearMonthDiv.innerText = `Dữ liệu không hợp lệ`;
+                return;
+            }
+            // Kiểm tra sơ bộ ngày
+            if (month < 1 || month > 12 || day < 1 || day > 31) {
+                partListContainer.innerHTML = `<div class="empty-note">⚠️ Ngày hoặc tháng không hợp lệ.</div>`;
+                infoYearMonthDiv.innerText = `${day}/${month}/${year} (không hợp lệ)`;
+                return;
+            }
+            try {
+                // Chuyển đổi Dương -> Âm bằng thuật toán
+                const lunar = convertSolar2Lunar(day, month, year, 7);
+                if (lunar.lunarDay === 0 || lunar.lunarMonth === 0) {
+                    partListContainer.innerHTML = `<div class="empty-note">⚠️ Không thể chuyển đổi ngày này sang Âm lịch.</div>`;
+                    infoYearMonthDiv.innerText = `${day}/${month}/${year} (lỗi chuyển đổi)`;
+                    return;
+                }
+                const lunarMonthVal = lunar.lunarMonth;
+                const lunarYearVal = lunar.lunarYear;
+                const yearAnimal = getAnimalByYear(lunarYearVal);
+                const parts = computeParts(lunarMonthVal, lunarYearVal);
+                const startOrderRaw = (lunarMonthVal + 1) % 12;
+                const startOrder = startOrderRaw === 0 ? 12 : startOrderRaw;
+                const startAnimal = getAnimalByOrder(startOrder);
+                // Hiển thị thông tin rõ ràng: ngày dương đã nhập và kết quả âm lịch tương ứng
+                infoYearMonthDiv.innerHTML = `📆 Dương: ${day}/${month}/${year} → Âm: Ngày ${lunar.lunarDay} tháng ${lunarMonthVal} năm ${lunarYearVal} (${yearAnimal})<br>🔹 Loại bỏ ${yearAnimal} khi xếp bộ phận`;
+                let html = `<div class="grid-parts">`;
+                for (let item of parts) {
+                    html += `<div class="part-card"><span class="part-name">${item.part}</span><span class="part-animal">${item.animal}</span></div>`;
+                }
+                html += `</div><div class="info-note">✨ (Dương lịch → Âm lịch theo thuật toán thiên văn) Xuất phát từ tháng ${lunarMonthVal}+1 = ${startOrder} (${startAnimal}) gán cho Gan, bỏ qua ${yearAnimal}.</div>`;
+                partListContainer.innerHTML = html;
+            } catch (err) {
+                console.error(err);
+                partListContainer.innerHTML = `<div class="empty-note">❌ Lỗi chuyển đổi: ${err.message}</div>`;
+                infoYearMonthDiv.innerText = `${day}/${month}/${year} (lỗi xử lý)`;
+            }
+        }
+    }
+
+    // Sự kiện
+    toggleLunarBtn.addEventListener("click", () => {
+        currentMode = "LUNAR";
+        updateUIMode();
+        renderResult();
+    });
+    toggleSolarBtn.addEventListener("click", () => {
+        currentMode = "SOLAR";
+        updateUIMode();
+        renderResult();
+    });
+    calcBtn.addEventListener("click", () => {
+        renderResult();
+    });
+    // Thay đổi input cũng gọi render
+    yearInput.addEventListener("change", renderResult);
+    monthInput.addEventListener("change", renderResult);
+    if (dayInput) dayInput.addEventListener("change", renderResult);
+
+    // Khởi tạo mặc định
+    updateUIMode();
+    renderResult();
+</script>
+</body>
+</html>
