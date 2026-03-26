@@ -565,7 +565,7 @@
                 for (let item of parts) {
                     html += `<div class="part-card"><span class="part-name">${item.part}</span><span class="part-animal">${item.animal}</span></div>`;
                 }
-                html += `</div><div class="info-note">✨ (Dương lịch → Âm lịch theo thuật toán thiên văn) Xuất phát từ tháng ${lunarMonthVal}+1 = ${startOrder} (${startAnimal}) gán cho Gan, bỏ qua ${yearAnimal}.</div>`;
+                html += `</div><div class="info-note"> Xuất phát từ tháng ${lunarMonthVal}+1 = ${startOrder} (${startAnimal}) gán cho Gan, bỏ qua ${yearAnimal}.</div>`;
                 partListContainer.innerHTML = html;
             } catch (err) {
                 console.error(err);
