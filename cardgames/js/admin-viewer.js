@@ -1,26 +1,23 @@
-// js/admin-viewer.js - Trang quản trị
+// js/admin-viewer.js - Dùng Google Sheets CSV export (không CORS)
 
 const AdminViewer = {
-    // Dùng chung URL với config
-    API_URL: CONFIG.ADMIN_API_URL,
+    // Dùng link publish CSV của Google Sheet
+    // SAU KHI PUBLISH, COPY LINK VÀO ĐÂY
+    CSV_URL: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ3xf1GiV2p8-QK-48KOjjdNP_JMgSUeZfMxtVEh-QfzuSpyiUTQoqURZ_b-cRHVgw9HeaF-i4FsNQO/pub?output=csv",
     
-    // Dữ liệu
     allResponses: [],
     filteredResponses: [],
     deckData: {},
     
-    // Khởi tạo
     async init() {
         await this.loadAllDeckData();
-        await this.loadDataFromSheet();
+        await this.loadDataFromSheetCSV();
         this.bindEvents();
     },
     
-    // Tải dữ liệu thẻ từ JSON
     async loadAllDeckData() {
-        console.log('📚 Đang tải dữ liệu thẻ từ JSON...');
+        console.log('📚 Đang tải dữ liệu thẻ...');
         
-        // Tạo map tên file -> deck name
         const deckMap = {
             'careerInterests.json': 'careers',
             'careerValues.json': 'career',
@@ -44,40 +41,27 @@ const AdminViewer = {
         }
     },
     
-    // Lấy dữ liệu từ Google Sheet qua GET request
-    async loadDataFromSheet() {
+    // Đọc CSV từ Google Sheet publish
+    async loadDataFromSheetCSV() {
         try {
-            console.log('📥 Đang tải từ API:', this.API_URL);
+            console.log('📥 Đang tải CSV từ:', this.CSV_URL);
             
-            // Thêm timestamp để tránh cache
-            const url = `${this.API_URL}?t=${Date.now()}`;
-            
-            const response = await fetch(url, {
+            // Dùng fetch với CORS mode, Google Sheets publish support CORS
+            const response = await fetch(this.CSV_URL, {
                 method: 'GET',
-                mode: 'cors',
-                headers: {
-                    'Accept': 'application/json'
-                }
+                cache: 'no-cache'
             });
             
             if (!response.ok) {
-                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                throw new Error(`HTTP ${response.status}`);
             }
             
-            const result = await response.json();
-            console.log('📦 Response từ server:', result);
+            const csvText = await response.text();
+            console.log('📄 CSV nhận được, độ dài:', csvText.length);
             
-            if (result.success === false) {
-                throw new Error(result.error || 'Lỗi từ server');
-            }
-            
-            // Xử lý cả 2 format có thể trả về
-            let data = result.data || result;
-            if (!Array.isArray(data)) {
-                data = [];
-            }
-            
-            this.allResponses = data;
+            // Parse CSV
+            const parsedData = this.parseCSV(csvText);
+            this.allResponses = parsedData;
             this.filteredResponses = [...this.allResponses];
             
             this.updateStats();
@@ -85,27 +69,95 @@ const AdminViewer = {
             
             console.log('✅ Đã tải thành công:', this.allResponses.length, 'bản ghi');
             
-            if (this.allResponses.length === 0) {
-                this.showEmptyMessage();
-            }
-            
         } catch (error) {
-            console.error('❌ Lỗi tải dữ liệu:', error);
-            this.showErrorMessage(error);
+            console.error('❌ Lỗi tải CSV:', error);
+            this.showErrorMessage(error.message);
         }
     },
     
-    showEmptyMessage() {
-        const tbody = document.getElementById('respondentsBody');
-        if (tbody) {
-            tbody.innerHTML = `
-                <tr>
-                    <td colspan="9" class="loading-cell">
-                        📭 Chưa có dữ liệu nào.<br>
-                        <small>Hãy thử gửi một bài khảo sát trước.</small>
-                    </td>
-                </tr>
-            `;
+    // Parse CSV text thành object array
+    parseCSV(csvText) {
+        const lines = csvText.split('\n');
+        if (lines.length < 2) return [];
+        
+        // Parse headers (dòng đầu)
+        const headers = this.parseCSVLine(lines[0]);
+        
+        const rows = [];
+        for (let i = 1; i < lines.length; i++) {
+            const line = lines[i].trim();
+            if (!line) continue;
+            
+            const values = this.parseCSVLine(line);
+            const row = {};
+            
+            headers.forEach((header, idx) => {
+                let value = values[idx] || '';
+                // Xử lý timestamp
+                if (header === 'Timestamp' && value && !value.includes('/')) {
+                    const date = new Date(value);
+                    if (!isNaN(date.getTime())) {
+                        value = date.toLocaleString('vi-VN');
+                    }
+                }
+                row[header] = value;
+            });
+            
+            // Chỉ lấy row có UserName
+            if (row.UserName && row.UserName.trim()) {
+                rows.push(row);
+            }
+        }
+        
+        return rows;
+    },
+    
+    // Parse một dòng CSV (xử lý dấu ngoặc kép và comma trong field)
+    parseCSVLine(line) {
+        const result = [];
+        let inQuote = false;
+        let current = '';
+        
+        for (let i = 0; i < line.length; i++) {
+            const char = line[i];
+            
+            if (char === '"') {
+                inQuote = !inQuote;
+            } else if (char === ',' && !inQuote) {
+                result.push(current.trim());
+                current = '';
+            } else {
+                current += char;
+            }
+        }
+        result.push(current.trim());
+        
+        // Xóa dấu ngoặc kép thừa
+        return result.map(field => {
+            if (field.startsWith('"') && field.endsWith('"')) {
+                return field.slice(1, -1);
+            }
+            return field;
+        });
+    },
+    
+    // Refresh dữ liệu
+    async refreshData() {
+        const refreshBtn = document.getElementById('refreshBtn');
+        if (refreshBtn) {
+            refreshBtn.disabled = true;
+            refreshBtn.innerHTML = '⏳ Đang tải...';
+        }
+        
+        try {
+            await this.loadDataFromSheetCSV();
+        } catch (error) {
+            console.error('Refresh failed:', error);
+        } finally {
+            if (refreshBtn) {
+                refreshBtn.disabled = false;
+                refreshBtn.innerHTML = '🔄 Tải lại';
+            }
         }
     },
     
@@ -115,22 +167,19 @@ const AdminViewer = {
             tbody.innerHTML = `
                 <tr>
                     <td colspan="9" class="loading-cell" style="color: red;">
-                        ❌ Lỗi: ${Utils.escapeHtml(error.message)}<br><br>
-                        <strong>📋 Hướng dẫn sửa lỗi:</strong><br>
-                        1. Mở file Apps Script (Google Sheet)<br>
-                        2. Click "Deploy" → "New deployment"<br>
-                        3. Chọn type: "Web app"<br>
-                        4. Execute as: "Me"<br>
-                        5. Who has access: "Anyone"<br>
-                        6. Click "Deploy" và copy URL mới<br>
-                        7. Cập nhật URL vào config.js
+                        ❌ Lỗi: ${Utils.escapeHtml(error)}<br><br>
+                        <strong>📋 Hướng dẫn tạo link CSV:</strong><br>
+                        1. Mở Google Sheet chứa dữ liệu<br>
+                        2. File → Share → Publish to web<br>
+                        3. Chọn "Entire Document" → "CSV"<br>
+                        4. Copy link và paste vào CSV_URL<br>
+                        5. Lưu file và refresh lại trang
                     </td>
                 </tr>
             `;
         }
     },
     
-    // Cập nhật thống kê
     updateStats() {
         const totalSpan = document.getElementById('totalRespondents');
         const decksSpan = document.getElementById('totalDecks');
@@ -141,7 +190,6 @@ const AdminViewer = {
         if (decksSpan) decksSpan.textContent = uniqueDecks.size;
     },
     
-    // Lọc dữ liệu
     filterData() {
         const searchTerm = document.getElementById('searchInput')?.value.toLowerCase() || '';
         const deckFilter = document.getElementById('deckFilter')?.value || 'all';
@@ -157,7 +205,6 @@ const AdminViewer = {
             }
             
             if (deckFilter !== 'all' && row.DeckName !== deckFilter) return false;
-            
             if (ageFilter !== 'all' && row.UserAge !== ageFilter) return false;
             
             return true;
@@ -166,7 +213,6 @@ const AdminViewer = {
         this.renderTable();
     },
     
-    // Render bảng
     renderTable() {
         const tbody = document.getElementById('respondentsBody');
         
@@ -211,7 +257,6 @@ const AdminViewer = {
         return `<span class="deck-badge ${badgeClass}">${names[deckName] || deckName}</span>`;
     },
     
-    // Hiển thị chi tiết
     async showDetail(index) {
         const response = this.filteredResponses[index];
         if (!response) return;
@@ -232,13 +277,11 @@ const AdminViewer = {
                     <div class="info-item"><span class="info-label">📱 Điện thoại:</span><span class="info-value">${Utils.escapeHtml(response.UserPhone || '---')}</span></div>
                     <div class="info-item"><span class="info-label">🎂 Độ tuổi:</span><span class="info-value">${Utils.escapeHtml(response.UserAge || '---')}</span></div>
                     <div class="info-item"><span class="info-label">⏰ Thời gian:</span><span class="info-value">${Utils.escapeHtml(response.Timestamp || '---')}</span></div>
-                    <div class="info-item"><span class="info-label">🎴 Bộ thẻ:</span><span class="info-value">${Utils.escapeHtml(response.DeckName || '---')}</span></div>
                     <div class="info-item"><span class="info-label">📝 Ghi chú:</span><span class="info-value">${Utils.escapeHtml(response.Notes || 'Không có')}</span></div>
                 </div>
             </div>
         `;
         
-        // Hiển thị kết quả xếp thẻ
         const levels = ['Level_0', 'Level_1', 'Level_2', 'Level_3', 'Level_4'];
         const levelTitles = CONFIG.DECK_LEVELS[deckName] || CONFIG.DEFAULT_LEVELS;
         
@@ -274,7 +317,6 @@ const AdminViewer = {
         if (modal) modal.style.display = 'block';
     },
     
-    // Bind events
     bindEvents() {
         const searchInput = document.getElementById('searchInput');
         const deckFilter = document.getElementById('deckFilter');
@@ -284,9 +326,8 @@ const AdminViewer = {
         if (searchInput) searchInput.addEventListener('input', () => this.filterData());
         if (deckFilter) deckFilter.addEventListener('change', () => this.filterData());
         if (ageFilter) ageFilter.addEventListener('change', () => this.filterData());
-        if (refreshBtn) refreshBtn.addEventListener('click', () => this.loadDataFromSheet());
+        if (refreshBtn) refreshBtn.addEventListener('click', () => this.refreshData());
         
-        // Modal close
         const modal = document.getElementById('detailModal');
         const closeBtn = modal?.querySelector('.modal-close');
         
@@ -302,7 +343,7 @@ const AdminViewer = {
     }
 };
 
-// Khởi tạo khi trang load
+// Khởi tạo
 document.addEventListener('DOMContentLoaded', () => {
     AdminViewer.init();
 });
