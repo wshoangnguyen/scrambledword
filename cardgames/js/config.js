@@ -178,7 +178,7 @@ isMatrixDeck() {
         instructions: "Đọc từng phát biểu và xếp vào cột phù hợp nhất với con người thật của bạn. Không có câu trả lời đúng hay sai."
 }
     },
-    SUBMIT_SHEET_URL: "https://script.google.com/macros/s/AKfycby_Cvs1jFC1PaQU65LyPi5l47so7Ugblbq0ocEzoqWyOLKA0iikHyF8TwFaxpN-aAfkZg/exec",
-    ADMIN_API_URL: "https://script.google.com/macros/s/AKfycby_Cvs1jFC1PaQU65LyPi5l47so7Ugblbq0ocEzoqWyOLKA0iikHyF8TwFaxpN-aAfkZg/exec"
+    SUBMIT_SHEET_URL: "https://script.google.com/macros/s/AKfycbx8U1W7b3pCzD8VkN6UwEk1QBs9Jj9sA9TwqNOlDFAXzd6A4-HCZ9c2vESkqs64DVuTRw/exec",
+    ADMIN_API_URL: "https://script.google.com/macros/s/AKfycbx8U1W7b3pCzD8VkN6UwEk1QBs9Jj9sA9TwqNOlDFAXzd6A4-HCZ9c2vESkqs64DVuTRw/exec",
 
 };
