@@ -121,29 +121,28 @@ const AdminViewer = {
     },
     
     // Định vị tooltip
-    positionTooltip(tooltip, event) {
-        const mouseX = event.clientX;
-        const mouseY = event.clientY;
-        const tooltipRect = tooltip.getBoundingClientRect();
-        const scrollX = window.scrollX;
-        const scrollY = window.scrollY;
-        
-        let left = mouseX + scrollX + 15;
-        let top = mouseY + scrollY + 15;
-        
-        // Kiểm tra va chạm với mép phải màn hình
-        if (left + tooltipRect.width > window.innerWidth + scrollX - 10) {
-            left = mouseX + scrollX - tooltipRect.width - 15;
-        }
-        
-        // Kiểm tra va chạm với mép dưới màn hình
-        if (top + tooltipRect.height > window.innerHeight + scrollY - 10) {
-            top = mouseY + scrollY - tooltipRect.height - 15;
-        }
-        
-        tooltip.style.left = left + 'px';
-        tooltip.style.top = top + 'px';
-    },
+positionTooltip(tooltip, event) {
+    const mouseX = event.clientX;
+    const mouseY = event.clientY;
+    const tooltipRect = tooltip.getBoundingClientRect();
+    
+    // KHÔNG cộng scrollX, scrollY nữa vì tooltip sử dụng position: fixed
+    let left = mouseX + 15;
+    let top = mouseY + 15;
+    
+    // Kiểm tra va chạm với mép phải màn hình
+    if (left + tooltipRect.width > window.innerWidth - 10) {
+        left = mouseX - tooltipRect.width - 15;
+    }
+    
+    // Kiểm tra va chạm với mép dưới màn hình
+    if (top + tooltipRect.height > window.innerHeight - 10) {
+        top = mouseY - tooltipRect.height - 15;
+    }
+    
+    tooltip.style.left = left + 'px';
+    tooltip.style.top = top + 'px';
+},
     
     // Ẩn tooltip
     hideTooltip() {
