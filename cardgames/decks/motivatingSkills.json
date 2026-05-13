@@ -1,0 +1,308 @@
+[
+  {
+    "id": 1,
+    "name": "MIÊU TẢ BẰNG HÌNH VẼ",
+    "english": "PORTRAY IMAGES",
+    "description": "Phác thảo, minh họa, vẽ và chụp ảnh."
+  },
+  {
+    "id": 2,
+    "name": "LÀM VIỆC NHÓM",
+    "english": "TEAMWORK",
+    "description": "Làm việc với người khác một cách dễ dàng và hiệu quả để đạt được kết quả chung."
+  },
+  {
+    "id": 3,
+    "name": "ĐỘNG VIÊN",
+    "english": "MOTIVATE",
+    "description": "Tham gia tuyển dụng, tạo năng lượng, kích thích hiệu suất cao nhất."
+  },
+  {
+    "id": 4,
+    "name": "THÍCH NGHI VỚI SỰ THAY ĐỔI",
+    "english": "ADAPT TO CHANGE",
+    "description": "Dễ dàng và nhanh chóng đáp ứng với việc thay đổi phân công, môi trường công việc, và các thứ tự ưu tiên."
+  },
+  {
+    "id": 5,
+    "name": "HỖ TRỢ VỀ CẢM XÚC",
+    "english": "DEAL WITH FEELINGS",
+    "description": "Khuyến khích chia sẻ, lắng nghe, chấp nhận, đồng cảm, thấu hiểu, xoa dịu sự tức giận, truyền sự bình tĩnh, hài hước và thể hiện sự cảm kích."
+  },
+  {
+    "id": 6,
+    "name": "TRIỂN KHAI THỰC HIỆN",
+    "english": "IMPLEMENT",
+    "description": "Theo dõi chi tiết quá trình thực hiện các chính sách và kế hoạch."
+  },
+  {
+    "id": 7,
+    "name": "SỬ DỤNG MÁY TÍNH",
+    "english": "COMPUTER LITERATE",
+    "description": "Phát triển, sắp xếp và hoàn thành các công việc và dự án bằng các chương trình phần mềm như Microsoft Word, Excel và PowerPoint."
+  },
+  {
+    "id": 8,
+    "name": "THIẾT KẾ",
+    "english": "DESIGN",
+    "description": "Thiết kế các mô hình ứng dụng, chương trình, sản phẩm hoặc môi trường mới, mang tính cải tiến."
+  },
+  {
+    "id": 9,
+    "name": "GIÁM SÁT",
+    "english": "SUPERVISE",
+    "description": "Giám sát, chỉ đạo công việc của người khác."
+  },
+  {
+    "id": 10,
+    "name": "LÊN KẾ HOẠCH/ TỔ CHỨC",
+    "english": "PLAN, ORGANIZE",
+    "description": "Xác định mục tiêu, lên lịch để phát triển các dự án hoặc chương trình."
+  },
+  {
+    "id": 11,
+    "name": "QUAN SÁT",
+    "english": "OBSERVE",
+    "description": "Nghiên cứu, xem xét kỹ lưỡng, kiểm tra dữ liệu và các nguồn lực khác một cách khoa học."
+  },
+  {
+    "id": 12,
+    "name": "ƯỚC TÍNH",
+    "english": "ESTIMATE",
+    "description": "Thẩm định giá trị hoặc chi phí."
+  },
+  {
+    "id": 13,
+    "name": "KHỞI XƯỚNG THAY ĐỔI",
+    "english": "INITIATE CHANGE",
+    "description": "Tạo ảnh hưởng đến việc thay đổi hiện trạng, dẫn đầu trong việc đưa ra các hướng đi mới."
+  },
+  {
+    "id": 14,
+    "name": "ĐÁNH GIÁ",
+    "english": "EVALUATE",
+    "description": "Đánh giá, xem xét, phê bình tính khả thi hoặc chất lượng."
+  },
+  {
+    "id": 15,
+    "name": "KHÁI NIỆM HÓA",
+    "english": "CONCEPTUALIZE",
+    "description": "Tiếp thu và phát triển các nội dung của khái niệm và ý tưởng."
+  },
+  {
+    "id": 16,
+    "name": "HƯỚNG DẪN",
+    "english": "MENTOR",
+    "description": "Đào tạo, hướng dẫn, huấn luyện hoặc tư vấn cho một đồng nghiệp chưa làm tốt công việc hoặc nhân viên cấp dưới."
+  },
+  {
+    "id": 17,
+    "name": "GIÁM SÁT",
+    "english": "MONITOR",
+    "description": "Theo dõi sự di chuyển của dữ liệu, con người hoặc vật chất."
+  },
+  {
+    "id": 18,
+    "name": "ỦY QUYỀN",
+    "english": "DELEGATE",
+    "description": "Đạt được hiệu quả bằng cách phân công công việc cho người khác."
+  },
+  {
+    "id": 19,
+    "name": "TẠO Ý TƯỞNG",
+    "english": "GENERATE IDEAS",
+    "description": "Suy ngẫm, nhận thức, vẽ mơ ước, lên ý tưởng."
+  },
+  {
+    "id": 20,
+    "name": "ĐƯA RA QUYẾT ĐỊNH",
+    "english": "MAKE DECISIONS",
+    "description": "Thường xuyên đưa ra các quyết định lớn hoặc phức tạp."
+  },
+  {
+    "id": 21,
+    "name": "PHÂN TÍCH",
+    "english": "ANALYZE",
+    "description": "Phân tích và tìm ra vấn đề một cách logic."
+  },
+  {
+    "id": 22,
+    "name": "NGHIÊN CỨU TRỰC TUYẾN",
+    "english": "RESEARCH ONLINE",
+    "description": "Có thể sử dụng các công cụ tìm kiếm và trang web để thu thập, sắp xếp thông tin và dữ liệu."
+  },
+  {
+    "id": 23,
+    "name": "SẮP XẾP và TỔ CHỨC",
+    "english": "MAKE ARRANGEMENTS",
+    "description": "Phối hợp tổ chức sự kiện và xử lý hậu cần."
+  },
+  {
+    "id": 24,
+    "name": "TRỰC QUAN HÓA",
+    "english": "VISUALIZE",
+    "description": "Hình dung ra các khả năng có thể gợi nhớ, ghi sâu vào tâm trí."
+  },
+  {
+    "id": 25,
+    "name": "ĐỌC THÔNG TIN",
+    "english": "READ FOR INFORMATION",
+    "description": "Nghiên cứu tài nguyên bằng văn bản một cách hiệu quả và triệt để."
+  },
+  {
+    "id": 26,
+    "name": "TỔNG HỢP",
+    "english": "SYNTHESIZE",
+    "description": "Tổng hợp các ý tưởng và thông tin, kết hợp các yếu tố đa dạng thành một tổng thể thống nhất."
+  },
+  {
+    "id": 27,
+    "name": "ĐÓNG VAI TRÒ NGƯỜI KẾT NỐI",
+    "english": "ACT AS LIAISON",
+    "description": "Đóng vai trò như một liên kết giữa các cá nhân hoặc nhóm."
+  },
+  {
+    "id": 28,
+    "name": "ĐA NHIỆM",
+    "english": "MULTI-TASK",
+    "description": "Có thể quản lý hiệu quả một loạt các công việc và dự án cùng một lúc."
+  },
+  {
+    "id": 29,
+    "name": "ĐỌC VÀ SỬA VĂN BẢN",
+    "english": "PROOF-READ/EDIT",
+    "description": "Kiểm tra các bài viết để đảm bảo cách dùng đúng văn phạm, chính tả và sửa đổi cải thiện."
+  },
+  {
+    "id": 30,
+    "name": "PHỎNG VẤN THU THẬP THÔNG TIN",
+    "english": "INTERVIEW FOR INFORMATION",
+    "description": "Rút ra được các thông tin cần thiết thông qua việc đặt câu hỏi."
+  },
+  {
+    "id": 31,
+    "name": "ĐỔI MỚI / SÁNG TẠO",
+    "english": "INNOVATE/INVENT",
+    "description": "Tạo ra các ý tưởng độc đáo hoặc kết hợp chúng với những ý tưởng đã có để có được kết quả mới hoặc độc đáo."
+  },
+  {
+    "id": 32,
+    "name": "ĐỨNG Ở VỊ TRÍ TRUNG GIAN",
+    "english": "MEDIATE",
+    "description": "Quản lý xung đột và dung hòa các sự khác biệt."
+  },
+  {
+    "id": 33,
+    "name": "LÀM VIỆC VỚI CON SỐ",
+    "english": "WORK WITH NUMBERS",
+    "description": "Dễ dàng tính toán, định giá, sắp xếp, hiểu và giải quyết các vấn đề về con số và số lượng."
+  },
+  {
+    "id": 34,
+    "name": "TƯ VẤN",
+    "english": "COUNSEL",
+    "description": "Tạo điều kiện cho việc phát triển bản thân, hướng dẫn, tư vấn sinh viên, nhân viên hoặc khách hàng."
+  },
+  {
+    "id": 35,
+    "name": "LẬP CHIẾN LƯỢC",
+    "english": "STRATEGIZE",
+    "description": "Lập kế hoạch hiệu quả và phát triển các chiến lược dài hạn để hoàn thành các mục tiêu một cách thành công."
+  },
+  {
+    "id": 36,
+    "name": "BÁN",
+    "english": "SELL",
+    "description": "Quảng bá cho một cá thể, công ty, hàng hóa, hoặc dịch vụ; thuyết phục gây quỹ, quyên góp tiền."
+  },
+  {
+    "id": 37,
+    "name": "GIẢI TRÍ / BIỂU DIỄN",
+    "english": "ENTERTAIN/PERFORM",
+    "description": "Biểu diễn, ca hát, nhảy múa, biểu diễn nghệ thuật, chơi nhạc, để phục vụ khán giả."
+  },
+  {
+    "id": 38,
+    "name": "LƯU TRỮ HỒ SƠ",
+    "english": "MAINTAIN RECORDS",
+    "description": "Lưu giữ và cập nhật chính xác các hồ sơ, nhật ký."
+  },
+  {
+    "id": 39,
+    "name": "VIẾT",
+    "english": "WRITE",
+    "description": "Soạn báo cáo, thư từ, bài viết, quảng cáo, truyện hoặc tài liệu giáo dục."
+  },
+  {
+    "id": 40,
+    "name": "ĐÀM PHÁN",
+    "english": "NEGOTIATE",
+    "description": "Thương thuyết cho các quyền hoặc lợi thế."
+  },
+  {
+    "id": 41,
+    "name": "QUẢN LÝ THỜI GIAN",
+    "english": "MANAGE TIME",
+    "description": "Khả năng sắp xếp ưu tiên, cấu trúc và lên lịch các nhiệm vụ để tối đa hóa hiệu quả và đáp ứng thời hạn."
+  },
+  {
+    "id": 42,
+    "name": "SỬ DỤNG CƠ KHÍ",
+    "english": "USE MECHANICAL ABILITIES",
+    "description": "Lắp ráp, điều chỉnh, sửa chữa, vận hành động cơ hoặc các máy móc khác."
+  },
+  {
+    "id": 43,
+    "name": "PHÂN LOẠI",
+    "english": "CLASSIFY",
+    "description": "Nhóm, phân loại, hệ thống hóa dữ liệu, con người và các nguồn lực khác."
+  },
+  {
+    "id": 44,
+    "name": "KIỂM TRA",
+    "english": "TEST",
+    "description": "Đo lường và kiểm tra nhiều lần để đảm bảo mức độ thành thạo, chất lượng hoặc hiệu lực."
+  },
+  {
+    "id": 45,
+    "name": "DỰ TOÁN NGÂN SÁCH",
+    "english": "BUDGET",
+    "description": "Tính toán, tiết kiệm, cân đối thu chi về tài chính."
+  },
+  {
+    "id": 46,
+    "name": "LINH CẢM",
+    "english": "PERCEIVE INTUITIVELY",
+    "description": "Cảm nhận, cho thấy sự thấu hiểu và linh cảm trước các vấn đề."
+  },
+  {
+    "id": 47,
+    "name": "ỨNG BIẾN",
+    "english": "IMPROVISE",
+    "description": "Suy nghĩ, nói, và hành động một cách hiệu quả mà không cần chuẩn bị trước."
+  },
+  {
+    "id": 48,
+    "name": "CHẤP NHẬN SỰ MƠ HỒ",
+    "english": "DEAL WITH AMBIGUITY",
+    "description": "Cảm thấy thoải mái và hiệu quả với các vấn đề thiếu rõ ràng, cấu trúc chưa tốt hoặc không chắc chắn."
+  },
+  {
+    "id": 49,
+    "name": "DẠY và HUẤN LUYỆN",
+    "english": "TEACH, TRAIN",
+    "description": "Thông báo, giải thích, hướng dẫn cho sinh viên, nhân viên hoặc khách hàng."
+  },
+  {
+    "id": 50,
+    "name": "CHĂM SÓC KHÁCH HÀNG",
+    "english": "CUSTOMER SERVICE",
+    "description": "Giải quyết các vấn đề khó khăn và làm hài lòng khách hàng một cách hiệu quả."
+  },
+  {
+    "id": 51,
+    "name": "THÚC ĐẨY",
+    "english": "EXPEDITE",
+    "description": "Tăng tốc sản xuất hoặc dịch vụ, khắc phục các sự cố, hợp lý hóa thủ tục."
+  }
+]

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Sắp xếp giá trị cốt lõi</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="container">
+    <!-- MENU CHỌN BỘ THỦ CÔNG -->
+    <div id="menuContainer" class="menu-container">
+        <h1 style="margin: 0px;">Mời chọn 1 bộ thẻ</h1>
+        <div class="deck-grid" id="deckGrid">
+            <!-- Các nút bộ thẻ sẽ được tạo từ config -->
+        </div>
+        <p>💡 Mỗi bộ thẻ sẽ giúp bạn khám phá một khía cạnh khác nhau của bản thân</p>
+    </div>
+
+    <div id="loadingData" class="loading-data" style="display: none;">
+        <div class="spinner"></div>
+        <p id="loadingText">Đang tải dữ liệu...</p>
+    </div>
+
+    <div id="gameContent" >
+        <button id="backToMenuBtn" class="btn-back" style="position: absolute; top: 25px;">← Đổi bộ thẻ khác</button>  
+        <h1 id="gameTitle" class="game-title"></h1>
+        <div id="gameSubtitle" class="game-subtitle"></div>
+        <div class="instructions" id="instructions">
+            <!-- Nội dung hướng dẫn sẽ được inject -->             
+        </div>
+
+        <div class="columns-container" id="columnsContainer"></div>
+
+        <div class="form-container">
+            <h3>📝 Thông tin người tham gia</h3>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="userName">Họ và tên *</label>
+                    <input type="text" id="userName" placeholder="VD: Nguyễn Văn A">
+                </div>
+                <div class="form-group">
+                    <label for="userEmail">Email *</label>
+                    <input type="email" id="userEmail" placeholder="example@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="userPhone">Số điện thoại</label>
+                    <input type="tel" id="userPhone" placeholder="090xxxxxxx">
+                </div>
+                <div class="form-group">
+                    <label for="userAge">Độ tuổi</label>
+                    <select id="userAge">
+                        <option value="">Chọn độ tuổi</option>
+                        <option>Dưới 18</option>
+                        <option>18-25</option>
+                        <option>26-35</option>
+                        <option>36-45</option>
+                        <option>Trên 45</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="notes">Ghi chú thêm</label>
+                <textarea id="notes" rows="2" placeholder="Chia sẻ thêm..."></textarea>
+            </div>
+            <div class="button-group">
+                <button class="btn-submit" id="submitBtn">📤 Gửi kết quả</button>
+                <button class="btn-reset" id="resetBtn">🔄 Làm lại toàn bộ</button>
+            </div>
+            <div id="loading" class="loading" style="display:none;">
+                <div class="spinner" style="width:30px; height:30px;"></div>
+                <p>Đang gửi...</p>
+            </div>
+            <div id="resultMessage" class="result"></div>
+            <div id="errorMessage" class="error"></div>
+        </div>
+    </div>
+</div>
+
+<div id="floatingStack" class="floating-stack" style="display: none;">
+    <div class="stack-cards" id="stackContainer" draggable="false"></div>
+</div>
+
+<!-- Scripts -->
+<script src="js/config.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/data-loader.js"></script>
+<script src="js/game-state.js"></script>
+<script src="js/ui-renderer.js"></script>
+<script src="js/matrix-renderer.js"></script>
+<script src="js/drag-drop.js"></script>
+<script src="js/form-handler.js"></script>
+<script src="js/menu-handler.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
