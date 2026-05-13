@@ -1,0 +1,686 @@
+[
+  {
+    "id": 1,
+    "code": "ESR",
+    "name": "QUẢN LÝ VĂN PHÒNG",
+    "english": "OFFICE MANAGER"
+  },
+  {
+    "id": 2,
+    "code": "ESC",
+    "name": "QUẢN LÝ NHÂN VIÊN",
+    "english": "EMPLOYMENT MANAGER"
+  },
+  {
+    "id": 3,
+    "code": "SAE",
+    "name": "GIÁO VIÊN KINH DOANH",
+    "english": "BUSINESS TEACHER"
+  },
+  {
+    "id": 4,
+    "code": "ESI",
+    "name": "QUẢN LÝ TÍN DỤNG",
+    "english": "CREDIT MANAGER"
+  },
+  {
+    "id": 5,
+    "code": "ESR",
+    "name": "ĐẠI LÝ MUA BÁN",
+    "english": "PURCHASING AGENT"
+  },
+  {
+    "id": 6,
+    "code": "IES",
+    "name": "NHÀ TÂM LÝ HỌC",
+    "english": "PSYCHOLOGIST"
+  },
+  {
+    "id": 7,
+    "code": "ECS",
+    "name": "CHỦ KHÁCH SẠN NHỎ/ BÌNH DÂN",
+    "english": "BUDGET/BOUTIQUE HOTEL OWNER"
+  },
+  {
+    "id": 8,
+    "code": "SEC",
+    "name": "QUẢN TRỊ NGUỒN NHÂN LỰC",
+    "english": "HUMAN RESOURCE MANAGER"
+  },
+  {
+    "id": 9,
+    "code": "AIE",
+    "name": "QUẢN CHẾ VỊ THÀNH NIÊN",
+    "english": "JUVENILE PROBATION OFFICER"
+  },
+  {
+    "id": 10,
+    "code": "ESR",
+    "name": "QUẢN LÝ DỊCH VỤ ĂN UỐNG",
+    "english": "FOOD SERVICE MANAGER"
+  },
+  {
+    "id": 11,
+    "code": "SEI",
+    "name": "QUẢN LÝ TRƯỜNG HỌC",
+    "english": "SCHOOL ADMINISTRATOR"
+  },
+  {
+    "id": 12,
+    "code": "ASE",
+    "name": "GIÁM ĐỐC QUAN HỆ CÔNG CHÚNG",
+    "english": "PUBLIC RELATIONS DIRECTOR"
+  },
+  {
+    "id": 13,
+    "code": "SER",
+    "name": "QUẢN LÝ CỬA HÀNG",
+    "english": "DEPARTMENT STORE MANAGER"
+  },
+  {
+    "id": 14,
+    "code": "ERS",
+    "name": "QUẢN LÝ BÁN HÀNG",
+    "english": "SALES MANAGER"
+  },
+  {
+    "id": 15,
+    "code": "IRS",
+    "name": "CHỦ TRANG TRẠI",
+    "english": "RANCHER"
+  },
+  {
+    "id": 16,
+    "code": "SAE",
+    "name": "NGƯỜI TƯ VẤN NGHỀ NGHIỆP",
+    "english": "CAREER COUNSELOR"
+  },
+  {
+    "id": 17,
+    "code": "SIE",
+    "name": "CHUYÊN GIA DINH DƯỠNG",
+    "english": "DIETITIAN"
+  },
+  {
+    "id": 18,
+    "code": "ESC",
+    "name": "ĐẠI LÝ / MÔI GIỚI BẤT ĐỘNG SẢN",
+    "english": "REAL ESTATE AGENT/BROKER"
+  },
+  {
+    "id": 19,
+    "code": "ECS",
+    "name": "ĐẠI LÝ DU LỊCH",
+    "english": "TRAVEL AGENT"
+  },
+  {
+    "id": 20,
+    "code": "EAS",
+    "name": "MÔI GIỚI CHỨNG KHOÁN",
+    "english": "STOCKBROKER"
+  },
+  {
+    "id": 21,
+    "code": "IES",
+    "name": "DƯỢC SĨ",
+    "english": "PHARMACIST"
+  },
+  {
+    "id": 22,
+    "code": "SIE",
+    "name": "CHUYÊN VIÊN VẬT LÝ TRỊ LIỆU",
+    "english": "PHYSICAL THERAPIST"
+  },
+  {
+    "id": 23,
+    "code": "SER",
+    "name": "PHỤ TÁ CHĂM SÓC SỨC KHỎE TẠI NHÀ",
+    "english": "HOME HEALTH AIDE"
+  },
+  {
+    "id": 24,
+    "code": "ECS",
+    "name": "HUẤN LUYỆN VIÊN THỂ HÌNH",
+    "english": "FITNESS TRAINER"
+  },
+  {
+    "id": 25,
+    "code": "EAS",
+    "name": "NGƯỜI MẪU THỜI TRANG",
+    "english": "FASHION MODEL"
+  },
+  {
+    "id": 26,
+    "code": "SER",
+    "name": "GIÁO SƯ ĐẠI HỌC",
+    "english": "COLLEGE PROFESSOR"
+  },
+  {
+    "id": 27,
+    "code": "SEA",
+    "name": "NHÂN VIÊN CÔNG TÁC XÃ HỘI",
+    "english": "SOCIAL WORKER"
+  },
+  {
+    "id": 28,
+    "code": "SIA",
+    "name": "Y TÁ",
+    "english": "NURSE"
+  },
+  {
+    "id": 29,
+    "code": "CSE",
+    "name": "LỄ TÂN",
+    "english": "RECEPTIONIST"
+  },
+  {
+    "id": 30,
+    "code": "CSE",
+    "name": "TỔNG ĐÀI VIÊN",
+    "english": "TELEPHONE OPERATOR"
+  },
+  {
+    "id": 31,
+    "code": "SAE",
+    "name": "GIÁO VIÊN TIỂU HỌC",
+    "english": "ELEMENTARY SCHOOL TEACHER"
+  },
+  {
+    "id": 32,
+    "code": "ISR",
+    "name": "CHUYÊN VIÊN ĐIỀU TRỊ XƯƠNG KHỚP",
+    "english": "CHIROPRACTOR"
+  },
+  {
+    "id": 33,
+    "code": "ESA",
+    "name": "NHIẾP ẢNH GIA",
+    "english": "PHOTOGRAPHER"
+  },
+  {
+    "id": 34,
+    "code": "CSI",
+    "name": "KẾ TOÁN VIÊN",
+    "english": "ACCOUNTANT"
+  },
+  {
+    "id": 35,
+    "code": "SEA",
+    "name": "MỤC SƯ / LINH MỤC / GIÁO SĨ",
+    "english": "MINISTER / PRIEST / RABBI"
+  },
+  {
+    "id": 36,
+    "code": "ISC",
+    "name": "BÁC SĨ",
+    "english": "PHYSICIAN"
+  },
+  {
+    "id": 37,
+    "code": "SEA",
+    "name": "CHUYÊN VIÊN GIẢI QUYẾT TRANH CHẤP LAO ĐỘNG",
+    "english": "LABOR ARBITRATOR"
+  },
+  {
+    "id": 38,
+    "code": "SCE",
+    "name": "PHÁT THANH RADIO / PHÁT THANH VIÊN",
+    "english": "RADIO DJ / NEWSCASTER"
+  },
+  {
+    "id": 39,
+    "code": "IER",
+    "name": "QUẢN LÝ HỆ THỐNG THÔNG TIN",
+    "english": "INFORMATION SYSTEMS MANAGER"
+  },
+  {
+    "id": 40,
+    "code": "ESR",
+    "name": "NHÂN VIÊN BÁN MÁY TÍNH",
+    "english": "COMPUTER SALESPERSON"
+  },
+  {
+    "id": 41,
+    "code": "IRS",
+    "name": "TÁC GIẢ",
+    "english": "AUTHOR"
+  },
+  {
+    "id": 42,
+    "code": "ESI",
+    "name": "LUẬT SƯ",
+    "english": "LAWYER"
+  },
+  {
+    "id": 43,
+    "code": "SAE",
+    "name": "GIÁO VIÊN NGOẠI NGỮ",
+    "english": "FOREIGN LANGUAGE TEACHER"
+  },
+  {
+    "id": 44,
+    "code": "SAE",
+    "name": "GIÁO VIÊN TOÁN/ KHOA HỌC",
+    "english": "MATH-SCIENCE TEACHER"
+  },
+  {
+    "id": 45,
+    "code": "ESR",
+    "name": "NHÂN VIÊN PHỤC VỤ BÀN",
+    "english": "WAITER / WAITRESS"
+  },
+  {
+    "id": 46,
+    "code": "AES",
+    "name": "CHUYÊN VIÊN QUẢNG CÁO",
+    "english": "ADVERTISING EXECUTIVE"
+  },
+  {
+    "id": 47,
+    "code": "IES",
+    "name": "NHÀ KHOA HỌC XÃ HỘI",
+    "english": "SOCIAL SCIENTIST"
+  },
+  {
+    "id": 48,
+    "code": "SEC",
+    "name": "NHÂN VIÊN PHÚC LỢI XÃ HỘI",
+    "english": "COUNTY WELFARE WORKER"
+  },
+  {
+    "id": 49,
+    "code": "IRE",
+    "name": "KỸ THUẬT VIÊN PHÒNG THÍ NGHIỆM Y TẾ",
+    "english": "MEDICAL LABORATORY TECHNICIAN"
+  },
+  {
+    "id": 50,
+    "code": "IAS",
+    "name": "NHÀ KINH TẾ HỌC",
+    "english": "ECONOMIST"
+  },
+  {
+    "id": 51,
+    "code": "SER",
+    "name": "NHÀ TẠO MẪU TÓC / THỢ CẮT TÓC",
+    "english": "HAIR STYLIST/BARBER"
+  },
+  {
+    "id": 52,
+    "code": "RCI",
+    "name": "THỢ CƠ KHÍ Ô TÔ",
+    "english": "AUTO MECHANIC"
+  },
+  {
+    "id": 53,
+    "code": "RIE",
+    "name": "THỢ MÁY",
+    "english": "MACHINIST"
+  },
+  {
+    "id": 54,
+    "code": "RIE",
+    "name": "THỢ IN ẤN",
+    "english": "PRINTER"
+  },
+  {
+    "id": 55,
+    "code": "IRC",
+    "name": "NHÀ HÓA HỌC",
+    "english": "CHEMIST"
+  },
+  {
+    "id": 56,
+    "code": "IRE",
+    "name": "NHÀ VẬT LÝ HỌC",
+    "english": "PHYSICIST"
+  },
+  {
+    "id": 57,
+    "code": "SEI",
+    "name": "CHÍNH TRỊ GIA",
+    "english": "POLITICIAN"
+  },
+  {
+    "id": 58,
+    "code": "SAE",
+    "name": "GIÁO VIÊN KHOA HỌC XÃ HỘI",
+    "english": "SOCIAL SCIENCE TEACHER"
+  },
+  {
+    "id": 59,
+    "code": "IER",
+    "name": "NHÀ TOÁN HỌC",
+    "english": "MATHEMATICIAN"
+  },
+  {
+    "id": 60,
+    "code": "AES",
+    "name": "NHÂN VIÊN NGÀNH GIẢI TRÍ",
+    "english": "ENTERTAINER"
+  },
+  {
+    "id": 61,
+    "code": "ESC",
+    "name": "ĐẠI LÝ BẢO HIỂM",
+    "english": "INSURANCE AGENT"
+  },
+  {
+    "id": 62,
+    "code": "SEI",
+    "name": "QUẢN LÝ TRONG NGÀNH GIẢI TRÍ",
+    "english": "RECREATION LEADER"
+  },
+  {
+    "id": 63,
+    "code": "RE-",
+    "name": "SĨ QUAN QUÂN ĐỘI",
+    "english": "MILITARY OFFICER"
+  },
+  {
+    "id": 64,
+    "code": "SER",
+    "name": "CẢNH SÁT",
+    "english": "POLICE OFFICER"
+  },
+  {
+    "id": 65,
+    "code": "ASE",
+    "name": "QUẢN LÝ SẢN XUẤT",
+    "english": "PRODUCTION MANAGER"
+  },
+  {
+    "id": 66,
+    "code": "ESR",
+    "name": "NHÂN VIÊN NGÂN HÀNG",
+    "english": "BANKER"
+  },
+  {
+    "id": 67,
+    "code": "IRE",
+    "name": "NHÀ THỐNG KÊ",
+    "english": "STATISTICIAN"
+  },
+  {
+    "id": 68,
+    "code": "REI",
+    "name": "NGƯỜI LÀM VƯỜN CẢNH NGHỆ THUẬT",
+    "english": "LANDSCAPE GARDENER"
+  },
+  {
+    "id": 69,
+    "code": "ARE",
+    "name": "NGƯỜI TRỒNG / BÁN HOA",
+    "english": "FLORIST"
+  },
+  {
+    "id": 70,
+    "code": "ECS",
+    "name": "ĐẠI LÝ VÉ MÁY BAY",
+    "english": "AIRLINE TICKET AGENT"
+  },
+  {
+    "id": 71,
+    "code": "RCI",
+    "name": "NGƯỜI LẮP RÁP VẬN HÀNH CÔNG CỤ và MÁY MÓC",
+    "english": "INSTRUMENT ASSEMBLER"
+  },
+  {
+    "id": 72,
+    "code": "RCS",
+    "name": "TÀI XẾ XE TẢI",
+    "english": "TRUCK DRIVER"
+  },
+  {
+    "id": 73,
+    "code": "IRS",
+    "name": "BÁC SĨ THÚ Y",
+    "english": "VETERINARIAN"
+  },
+  {
+    "id": 74,
+    "code": "CSE",
+    "name": "PHÓNG VIÊN TÒA ÁN",
+    "english": "COURT REPORTER"
+  },
+  {
+    "id": 75,
+    "code": "SAI",
+    "name": "TRỢ LÝ NHA SĨ",
+    "english": "DENTAL ASSISTANT"
+  },
+  {
+    "id": 76,
+    "code": "ECS",
+    "name": "NHÀ THẦU XÂY DỰNG",
+    "english": "BUILDING CONTRACTOR"
+  },
+  {
+    "id": 77,
+    "code": "AES",
+    "name": "NGƯỜI VIẾT TÀI LIỆU KỸ THUẬT",
+    "english": "TECHNICAL WRITER"
+  },
+  {
+    "id": 78,
+    "code": "IER",
+    "name": "NHÀ PHÂN TÍCH HỆ THỐNG MÁY TÍNH",
+    "english": "COMPUTER SYSTEMS ANALYST"
+  },
+  {
+    "id": 79,
+    "code": "RCE",
+    "name": "THỢ MỘC",
+    "english": "CARPENTER"
+  },
+  {
+    "id": 80,
+    "code": "RIE",
+    "name": "THỢ ĐIỆN",
+    "english": "ELECTRICIAN"
+  },
+  {
+    "id": 81,
+    "code": "ESA",
+    "name": "NHÂN VIÊN BÁN LẺ",
+    "english": "RETAIL SALESPERSON"
+  },
+  {
+    "id": 82,
+    "code": "ISR",
+    "name": "KỸ THUẬT VIÊN PHÒNG MỔ",
+    "english": "OPERATING ROOM TECHNICIAN"
+  },
+  {
+    "id": 83,
+    "code": "CRS",
+    "name": "NGƯỜI ĐƯA THƯ",
+    "english": "MAIL CARRIER"
+  },
+  {
+    "id": 84,
+    "code": "RES",
+    "name": "NHÂN VIÊN KIỂM LÂM",
+    "english": "FOREST RANGER"
+  },
+  {
+    "id": 85,
+    "code": "ISE",
+    "name": "CHUYÊN VIÊN ĐO THỊ LỰC",
+    "english": "OPTOMETRIST"
+  },
+  {
+    "id": 86,
+    "code": "ASC",
+    "name": "NHẠC SĨ",
+    "english": "MUSICIAN"
+  },
+  {
+    "id": 87,
+    "code": "ARI",
+    "name": "NHÀ THIẾT KẾ TRANG PHỤC",
+    "english": "COSTUME DESIGNER"
+  },
+  {
+    "id": 88,
+    "code": "RES",
+    "name": "BẢO MẪU",
+    "english": "CHILD CARE WORKER"
+  },
+  {
+    "id": 89,
+    "code": "AER",
+    "name": "ĐỒ HỌA MÁY TÍNH",
+    "english": "COMPUTER GRAPHICS DESIGNER"
+  },
+  {
+    "id": 90,
+    "code": "CSI",
+    "name": "NHÂN VIÊN GHI CHÉP SỔ SÁCH KẾ TOÁN",
+    "english": "BOOKKEEPER"
+  },
+  {
+    "id": 91,
+    "code": "AES",
+    "name": "BIÊN TẬP VIÊN",
+    "english": "EDITOR"
+  },
+  {
+    "id": 92,
+    "code": "ESC",
+    "name": "NGƯỜI MUA HÀNG HÓA",
+    "english": "MERCHANDISE BUYER"
+  },
+  {
+    "id": 93,
+    "code": "ESA",
+    "name": "CHUYÊN VIÊN PHÒNG THƯƠNG MẠI",
+    "english": "CHAMBER OF COMMERCE EXECUTIVE"
+  },
+  {
+    "id": 94,
+    "code": "AES",
+    "name": "NGHỆ SĨ",
+    "english": "ARTIST"
+  },
+  {
+    "id": 95,
+    "code": "ASR",
+    "name": "NHÀ THIẾT KẾ THỜI TRANG",
+    "english": "FASHION DESIGNER"
+  },
+  {
+    "id": 96,
+    "code": "ASI",
+    "name": "PHÓNG VIÊN BÁO CHÍ",
+    "english": "NEWSPAPER REPORTER"
+  },
+  {
+    "id": 97,
+    "code": "RIE",
+    "name": "KỸ THUẬT VIÊN ĐIỆN TỬ",
+    "english": "ELECTRONICS TECHNICIAN"
+  },
+  {
+    "id": 98,
+    "code": "AIR",
+    "name": "KIẾN TRÚC SƯ",
+    "english": "ARCHITECT"
+  },
+  {
+    "id": 99,
+    "code": "AES",
+    "name": "NHÀ THIẾT KẾ NỘI THẤT",
+    "english": "INTERIOR DESIGNER"
+  },
+  {
+    "id": 100,
+    "code": "IRE",
+    "name": "LẬP TRÌNH VIÊN",
+    "english": "COMPUTER PROGRAMMER"
+  },
+  {
+    "id": 101,
+    "code": "AER",
+    "name": "VŨ CÔNG",
+    "english": "DANCER"
+  },
+  {
+    "id": 102,
+    "code": "RIS",
+    "name": "NGƯỜI LÀM NÔNG",
+    "english": "FARMER"
+  },
+  {
+    "id": 103,
+    "code": "AER",
+    "name": "HỌA SĨ MINH HỌA",
+    "english": "ILLUSTRATOR"
+  },
+  {
+    "id": 104,
+    "code": "CSR",
+    "name": "NGƯỜI VẬN HÀNH HỆ THỐNG MÁY TÍNH",
+    "english": "COMPUTER OPERATOR"
+  },
+  {
+    "id": 105,
+    "code": "REC",
+    "name": "KỸ SƯ",
+    "english": "ENGINEER"
+  },
+  {
+    "id": 106,
+    "code": "SER",
+    "name": "GIÁO VIÊN THỂ DỤC",
+    "english": "PHYSICAL EDUCATION TEACHER"
+  },
+  {
+    "id": 107,
+    "code": "SAI",
+    "name": "CHUYÊN VIÊN CHĂM SÓC RĂNG MIỆNG",
+    "english": "DENTAL HYGIENIST"
+  },
+  {
+    "id": 108,
+    "code": "ESC",
+    "name": "TRỢ LÝ HÀNH CHÍNH",
+    "english": "ADMINISTRATIVE ASSISTANT"
+  },
+  {
+    "id": 109,
+    "code": "ESA",
+    "name": "NHÂN VIÊN HÀNH CHÍNH CÔNG",
+    "english": "PUBLIC ADMINISTRATOR"
+  },
+  {
+    "id": 110,
+    "code": "RIE",
+    "name": "PHI CÔNG THƯƠNG MẠI",
+    "english": "COMMERCIAL PILOT"
+  },
+  {
+    "id": 111,
+    "code": "CRS",
+    "name": "THƯ KÝ VĂN PHÒNG",
+    "english": "OFFICE CLERK"
+  },
+  {
+    "id": 112,
+    "code": "SAI",
+    "name": "THỦ THƯ",
+    "english": "LIBRARIAN"
+  },
+  {
+    "id": 113,
+    "code": "CRS",
+    "name": "NGƯỜI DÀN TRANG/ THIẾT KẾ BÁO và TẠP CHÍ",
+    "english": "DESKTOP PUBLISHER"
+  },
+  {
+    "id": 114,
+    "code": "ISR",
+    "name": "NHA SĨ",
+    "english": "DENTIST"
+  }
+]

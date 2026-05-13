@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Sorting - Trang quản trị & tư vấn</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+<div class="admin-container">
+    <!-- Header -->
+    <div class="admin-header">
+
+        <div class="header-stats">
+        <h1>
+            <span class="material-icons">analytics</span>
+            Bảng điều khiển - Dữ liệu khảo sát
+        </h1>
+            <div class="stat-card" style="margin-left: auto;">
+                <span class="stat-value" id="totalRespondents">0</span>
+                <span class="stat-label">Người đã tham gia</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Thanh tìm kiếm và lọc -->
+    <div class="search-bar">
+        <div class="search-input-wrapper">
+            <span class="material-icons">search</span>
+            <input type="text" id="searchInput" placeholder="Tìm kiếm theo tên, email, số điện thoại...">
+        </div>
+        <div class="filters">
+            <select id="deckFilter">
+                <option value="all">📚 Tất cả bộ thẻ</option>
+                <option value="careers">💼 Sở thích nghề nghiệp</option>
+                <option value="career">🎯 Giá trị nghề nghiệp</option>
+                <option value="entertainment">🎬 Hoạt động giải trí</option>
+                <option value="skills">⚡ Kỹ năng tạo động lực</option>
+                <option value="disc">📊 DISC - Tính cách</option>
+            </select>
+            <select id="ageFilter">
+                <option value="all">📅 Tất cả độ tuổi</option>
+                <option value="Dưới 18">Dưới 18</option>
+                <option value="18-25">18-25</option>
+                <option value="26-35">26-35</option>
+                <option value="36-45">36-45</option>
+                <option value="Trên 45">Trên 45</option>
+            </select>
+        </div>
+            <button id="refreshBtn" class="btn-refresh">
+                <span class="material-icons">refresh</span>
+                Tải lại
+            </button>
+    </div>
+
+    <!-- Bảng danh sách respondents -->
+    <div class="respondents-table-wrapper">
+        <table class="respondents-table" id="respondentsTable">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Thời gian</th>
+                    <th>Họ tên</th>
+                    <th>Độ tuổi</th>
+                    <th>Số điện thoại</th>
+                    <th>Email</th>
+                    <th>Bộ thẻ</th>                    
+                    <th>Ghi chú</th>
+                    <th>Chi tiết</th>
+                </tr>
+            </thead>
+            <tbody id="respondentsBody">
+                <tr>
+                    <td colspan="9" class="loading-cell">
+                        <div class="spinner"></div>
+                        Đang tải dữ liệu...
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal chi tiết -->
+    <div id="detailModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>
+                    <span class="material-icons">person</span>
+                    <span id="modalUserName">Thông tin chi tiết</span>
+                </h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div id="modalBody" class="modal-body">
+                <!-- Nội dung chi tiết sẽ được inject -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/data-loader.js"></script>
+<script src="js/admin-viewer.js"></script>
+</body>
+</html>

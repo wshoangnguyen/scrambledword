@@ -1,0 +1,326 @@
+[
+  {
+    "id": 1,
+    "name": "THAM GIA CÁC HOẠT ĐỘNG XÃ HỘI",
+    "english": "ATTEND SOCIAL FUNCTIONS",
+    "description": "Xây dựng một mạng lưới liên lạc xã hội và tham dự các bữa tiệc."
+  },
+  {
+    "id": 2,
+    "name": "XEM PHIM",
+    "english": "ATTEND A MOVIE",
+    "description": "Kiểm tra danh sách các rạp chiếu phim địa phương và đi xem các thể loại phim mà tôi yêu thích."
+  },
+  {
+    "id": 3,
+    "name": "ĐI DU LỊCH",
+    "english": "TRAVEL",
+    "description": "Đi du lịch đến một địa điểm hấp dẫn nào đó ở bên ngoài khu vực tôi ở bằng ô tô, xe buýt, xe lửa, hoặc máy bay."
+  },
+  {
+    "id": 4,
+    "name": "MÁT XA",
+    "english": "MASSAGE",
+    "description": "Đấm bóp, mát xa cơ thể để thư giãn."
+  },
+  {
+    "id": 5,
+    "name": "THAM GIA CHIẾN DỊCH ỨNG CỬ CHO ỨNG VIÊN CHÍNH TRỊ",
+    "english": "CAMPAIGN FOR A POLITICAL CANDIDATE",
+    "description": "Tham gia các hoạt động vận động tranh cử cho một ứng viên chính trị."
+  },
+  {
+    "id": 6,
+    "name": "CHƠI THỂ THAO CÁ NHÂN",
+    "english": "PLAY INDIVIDUAL SPORTS",
+    "description": "Tham gia các môn thể thao cá nhân như chạy bộ, bơi lội, tennis, cầu lông..."
+  },
+  {
+    "id": 7,
+    "name": "NÓI CHUYỆN ĐIỆN THOẠI",
+    "english": "TALK ON THE TELEPHONE",
+    "description": "Trò chuyện với bạn bè, người thân qua điện thoại."
+  },
+  {
+    "id": 8,
+    "name": "GIẢNG DẠY",
+    "english": "TEACH A CLASS",
+    "description": "Hướng dẫn, truyền đạt kiến thức cho người khác trong một lớp học."
+  },
+  {
+    "id": 9,
+    "name": "ĐỌC SÁCH",
+    "english": "READ BOOKS",
+    "description": "Đọc sách để giải trí hoặc nâng cao kiến thức."
+  },
+  {
+    "id": 10,
+    "name": "BIỂU DIỄN CHO NIỀM VUI RIÊNG CỦA TÔI",
+    "english": "PERFORM FOR MY OWN PLEASURE",
+    "description": "Tự biểu diễn ca hát, nhảy múa, chơi nhạc cụ cho chính mình thư giãn."
+  },
+  {
+    "id": 11,
+    "name": "CHƠI CÁC MÔN THỂ THAO THEO ĐỘI",
+    "english": "PLAY TEAM SPORTS",
+    "description": "Tham gia các môn thể thao đồng đội như bóng đá, bóng rổ, bóng chuyền..."
+  },
+  {
+    "id": 12,
+    "name": "THAM DỰ MỘT SỰ KIỆN THỂ THAO",
+    "english": "ATTEND A SPORTS EVENT",
+    "description": "Đến xem các trận đấu thể thao chuyên nghiệp hoặc nghiệp dư."
+  },
+  {
+    "id": 13,
+    "name": "CẮM TRẠI HOẶC ĐI BỘ",
+    "english": "CAMP OR HIKE",
+    "description": "Tham gia các hoạt động ngoài trời như cắm trại, đi bộ đường dài, leo núi."
+  },
+  {
+    "id": 14,
+    "name": "ĐỌC BÁO VÀ TẠP CHÍ",
+    "english": "READ NEWSPAPERS AND MAGAZINES",
+    "description": "Cập nhật tin tức, thông tin qua báo giấy hoặc báo điện tử, tạp chí."
+  },
+  {
+    "id": 15,
+    "name": "SUY NGHĨ",
+    "english": "MEDITATE",
+    "description": "Thực hành thiền định, tĩnh tâm để thư giãn và cân bằng cuộc sống."
+  },
+  {
+    "id": 16,
+    "name": "THAM DỰ MỘT SỰ KIỆN VĂN HÓA",
+    "english": "ATTEND A CULTURAL EVENT",
+    "description": "Đến xem các sự kiện văn hóa như hòa nhạc, triển lãm nghệ thuật, kịch nói..."
+  },
+  {
+    "id": 17,
+    "name": "THĂM BẠN BÈ",
+    "english": "VISIT FRIENDS",
+    "description": "Đến thăm và trò chuyện cùng bạn bè tại nhà hoặc nơi gặp gỡ."
+  },
+  {
+    "id": 18,
+    "name": "LÀM ĐỒ THỦ CÔNG MỸ NGHỆ",
+    "english": "CREATE ARTS AND CRAFTS",
+    "description": "Tạo ra các sản phẩm thủ công, nghệ thuật như vẽ, nặn tượng, làm đồ handmade."
+  },
+  {
+    "id": 19,
+    "name": "GIẢI TRÍ CÙNG BẠN BÈ",
+    "english": "ENTERTAIN FRIENDS",
+    "description": "Tổ chức các buổi gặp mặt, tiệc nhỏ để vui chơi cùng bạn bè."
+  },
+  {
+    "id": 20,
+    "name": "LÃNH ĐẠO MỘT NHÓM",
+    "english": "LEAD A GROUP",
+    "description": "Đảm nhận vai trò lãnh đạo, điều phối một nhóm hoạt động nào đó."
+  },
+  {
+    "id": 21,
+    "name": "PHỐI HỢP TỔ CHỨC SỰ KIỆN",
+    "english": "COORDINATE AN EVENT",
+    "description": "Lên kế hoạch và tổ chức các sự kiện như hội thảo, tiệc, chương trình văn nghệ."
+  },
+  {
+    "id": 22,
+    "name": "CHƠI TRÒ CHƠI TRONG NHÀ",
+    "english": "PLAY INDOOR GAMES",
+    "description": "Chơi các trò chơi trong nhà như cờ vua, bài, game console..."
+  },
+  {
+    "id": 23,
+    "name": "LÀM VIỆC VỚI TIỀN BẠC",
+    "english": "WORK WITH MONEY",
+    "description": "Quản lý, tính toán, đầu tư hoặc giao dịch tiền bạc."
+  },
+  {
+    "id": 24,
+    "name": "THĂM GIA ĐÌNH",
+    "english": "VISIT FAMILY",
+    "description": "Đến thăm và dành thời gian bên người thân, gia đình."
+  },
+  {
+    "id": 25,
+    "name": "CHĂM SÓC MỘT KHU VƯỜN",
+    "english": "CULTIVATE A GARDEN",
+    "description": "Trồng trọt, chăm sóc cây cối, hoa lá trong khu vườn của mình."
+  },
+  {
+    "id": 26,
+    "name": "SỬ DỤNG THƯ VIỆN",
+    "english": "USE THE LIBRARY",
+    "description": "Đến thư viện để đọc sách, nghiên cứu, mượn tài liệu."
+  },
+  {
+    "id": 27,
+    "name": "XEM TI VI",
+    "english": "WATCH TELEVISION",
+    "description": "Xem các chương trình truyền hình, phim, tin tức trên TV."
+  },
+  {
+    "id": 28,
+    "name": "CHĂM SÓC TRẺ EM",
+    "english": "CARE FOR CHILDREN",
+    "description": "Chăm sóc, dạy dỗ và vui chơi cùng trẻ em."
+  },
+  {
+    "id": 29,
+    "name": "THAM GIA VÀO MỘT NHÓM",
+    "english": "JOIN A GROUP",
+    "description": "Tham gia các nhóm câu lạc bộ, hội, tổ chức có cùng sở thích hoặc mục đích."
+  },
+  {
+    "id": 30,
+    "name": "ĐI ĂN TỐI",
+    "english": "DINE OUT",
+    "description": "Trải nghiệm các món ăn và không gian của các nhà hàng địa phương."
+  },
+  {
+    "id": 31,
+    "name": "LÀM VIỆC VỚI CON SỐ",
+    "english": "WORK WITH NUMBERS",
+    "description": "Đo lường, tính toán, định lượng hoặc giải quyết các vấn đề dựa trên toán học."
+  },
+  {
+    "id": 32,
+    "name": "ĐI CÂU CÁ HOẶC SĂN BẮT",
+    "english": "FISH OR HUNT",
+    "description": "Tham gia các chuyến đi săn, bắn chim; hoặc đi câu ở hồ, biển lớn."
+  },
+  {
+    "id": 33,
+    "name": "THAM GIA TÌNH NGUYỆN",
+    "english": "VOLUNTEER",
+    "description": "Tham gia các dịch vụ tình nguyện tại bệnh viện, nhà an dưỡng, các trung tâm hoặc những nơi phát đồ ăn từ thiện."
+  },
+  {
+    "id": 34,
+    "name": "TỔ CHỨC MỘT CHUYẾN ĐI CHƠI",
+    "english": "GO ON AN OUTING",
+    "description": "Thực hiện các chuyến đi chơi trong ngày đến các địa điểm gần nhà như bảo tàng, phòng trưng bày, khu dã ngoại hoặc công viên."
+  },
+  {
+    "id": 35,
+    "name": "THAM GIA MỘT LỚP HỌC",
+    "english": "TAKE A CLASS",
+    "description": "Ghi danh vào một hội thảo, seminar hoặc khóa học về một chủ đề mà tôi thích."
+  },
+  {
+    "id": 36,
+    "name": "SƯU TẦM ĐỒ ĐẠC",
+    "english": "COLLECT THINGS",
+    "description": "Thu thập nhiều vật phẩm, đó là những thứ độc đáo, đẹp hoặc có một lý do đặc biệt với tôi."
+  },
+  {
+    "id": 37,
+    "name": "TẬP THỂ DỤC",
+    "english": "EXERCISE",
+    "description": "Tập thể dục để có thể hình và cơ bắp săn chắc thông qua các bài tập hoặc hoạt động vui chơi."
+  },
+  {
+    "id": 38,
+    "name": "DIỄN THUYẾT",
+    "english": "GIVE A TALK",
+    "description": "Thực hiện một bài thuyết trình về một vấn đề cộng đồng, nghệ thuật, văn nạn xã hội."
+  },
+  {
+    "id": 39,
+    "name": "LÀM VIỆC VỚI ĐỘNG VẬT",
+    "english": "WORK WITH ANIMALS",
+    "description": "Nhân giống, nuôi nấng, huấn luyện, trị bệnh, kinh doanh... hoặc chỉ đơn giản là chăm sóc chúng."
+  },
+  {
+    "id": 40,
+    "name": "LƯỚT WEB",
+    "english": "SURF THE WEB",
+    "description": "Thực hiện các khảo sát trực tuyến và/hoặc giao tiếp với bạn bè qua các kênh trực tuyến."
+  },
+  {
+    "id": 41,
+    "name": "TRANG TRÍ PHÒNG ỐC",
+    "english": "DECORATE A ROOM",
+    "description": "Tạo một diện mạo mới thông qua việc lựa chọn và sắp xếp màu sắc, chất liệu, đồ nội thất."
+  },
+  {
+    "id": 42,
+    "name": "THỰC HIỆN KHẢO SÁT",
+    "english": "CONDUCT A SURVEY",
+    "description": "Thực hiện những khảo sát về cảm xúc, đức tin và các vấn đề thực tiễn khác."
+  },
+  {
+    "id": 43,
+    "name": "BIỂU DIỄN Ở NƠI CÔNG CỘNG",
+    "english": "PERFORM IN PUBLIC",
+    "description": "Ca hát, nhảy múa, biểu diễn, chơi một số nhạc cụ hoặc thể hiện năng khiếu trên sân khấu."
+  },
+  {
+    "id": 44,
+    "name": "VIẾT",
+    "english": "WRITE",
+    "description": "Thể hiện những tâm tư, suy nghĩ của tôi qua thư từ, báo cáo, bài viết, truyện hoặc thơ."
+  },
+  {
+    "id": 45,
+    "name": "ĐI DẠO",
+    "english": "GO FOR A STROLL",
+    "description": "Ra ngoài và tận hưởng cảnh vật xung quanh khu phố, hoặc trong các chuyến tham quan."
+  },
+  {
+    "id": 46,
+    "name": "GÂY QUỸ",
+    "english": "RAISE FUNDS",
+    "description": "Tôi hỗ trợ gây quỹ bằng cách liên hệ trực tiếp đến từng nhà, qua email, điện thoại, buổi biểu diễn."
+  },
+  {
+    "id": 47,
+    "name": "MUA SẮM",
+    "english": "SHOP",
+    "description": "Tham quan các cửa hàng, buổi đấu giá và chợ trời để tìm kiếm món đồ mà tôi cần hoặc thu hút tôi."
+  },
+  {
+    "id": 48,
+    "name": "THỂ THAO MẠO HIỂM",
+    "english": "ADVENTURE SPORTS",
+    "description": "Tham gia nhảy dù, đua ô tô hoặc mô tô, lướt ván hoặc leo núi."
+  },
+  {
+    "id": 49,
+    "name": "XÂY DỰNG HAY BẢO HÀNH VÀ SỬA CHỮA VẬT DỤNG",
+    "english": "BUILD OR MAINTAIN AND REPAIR THINGS",
+    "description": "Làm những công việc lặt vặt, sửa chữa các đồ đạc như đồ mộc, hệ thống dây điện."
+  },
+  {
+    "id": 50,
+    "name": "QUẢN LÝ CÁC QUY TRÌNH KỸ THUẬT",
+    "english": "ADMINISTER TECHNICAL PROCEDURES",
+    "description": "Duy trì các hệ thống chi tiết để tổ chức và theo dõi luồng dữ liệu, con người, hoặc sự vật."
+  },
+  {
+    "id": 51,
+    "name": "THAM GIA CÁC HOẠT ĐỘNG VỀ TÔN GIÁO",
+    "english": "ATTEND TO RELIGIOUS ACTIVITIES",
+    "description": "Ghé thăm những nơi thờ phượng tôn giáo để cầu nguyện và tham gia các hoạt động được tài trợ bởi tôn giáo của tôi."
+  },
+  {
+    "id": 52,
+    "name": "CHĂM SÓC VƯỜN",
+    "english": "CARE FOR A LAWN",
+    "description": "Trồng, làm cỏ, cắt cỏ, tỉa cành và chăm sóc cây cối xung quanh."
+  },
+  {
+    "id": 53,
+    "name": "ĐẤU GIÁ TRỰC TUYẾN",
+    "english": "ON-LINE AUCTIONS",
+    "description": "Tham gia mua bán trên các cuộc đấu giá trực tuyến."
+  },
+  {
+    "id": 54,
+    "name": "GIAO DỊCH TRÊN THỊ TRƯỜNG CHỨNG KHOÁN",
+    "english": "TRADE ON THE STOCK MARKET",
+    "description": "Mua và bán cổ phiếu, trái phiếu, quỹ tương hỗ và hợp đồng tương lai."
+  }
+]
