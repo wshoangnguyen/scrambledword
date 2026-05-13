@@ -260,7 +260,7 @@
   {
     "id": 44,
     "code": "SAE",
-    "name": "GIÁO VIÊN TOÁN, KHOA HỌC",
+    "name": "GIÁO VIÊN TOÁN/ KHOA HỌC",
     "english": "MATH-SCIENCE TEACHER"
   },
   {
@@ -422,7 +422,7 @@
   {
     "id": 71,
     "code": "RCI",
-    "name": "NGƯỜI LẮP RÁP VẬN HÀNH CÔNG CỤ, MÁY MÓC",
+    "name": "NGƯỜI LẮP RÁP VẬN HÀNH CÔNG CỤ và MÁY MÓC",
     "english": "INSTRUMENT ASSEMBLER"
   },
   {
@@ -674,7 +674,7 @@
   {
     "id": 113,
     "code": "CRS",
-    "name": "NGƯỜI DÀN TRANG, THIẾT KẾ BÁO, TẠP CHÍ",
+    "name": "NGƯỜI DÀN TRANG/ THIẾT KẾ BÁO và TẠP CHÍ",
     "english": "DESKTOP PUBLISHER"
   },
   {
